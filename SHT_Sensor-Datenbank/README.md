@@ -4,7 +4,7 @@
 
 ### Funktion
 
-Erstellen der myHOME-Sensor-Datenbank mit Node-RED
+Erstellen der Sensor-Datenbank mit Node-RED
 
 ### Details
 
@@ -23,9 +23,9 @@ Gesamter Flow für alle Optionen:
 
 ### Datenbank - SQL-Details
 
-SQL-Details zur WW-myHOME-Datenbank finden sich hier:
+SQL-Details zur Sensor-Datenbank finden sich hier:
 
-[myHOME_Datenbank_SQL.txt](./bin/myHOME_Datenbank_SQL.txt)
+[Sensor_Datenbank_SQL.txt](./bin/myHOME_Datenbank_SQL.txt)
 
 ### Datenbank-Tabelle - SENSOR_DEVICES
 
