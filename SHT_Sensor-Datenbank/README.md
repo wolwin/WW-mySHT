@@ -117,7 +117,7 @@ READ_FLAG       internes Flag           0 ... 255
 ```
 
 ### Setup
-[Setup der Sensor-Datenbank Tabellen mit Node-RED](./Setup.md)
+[Setup der Sensor-Datenbank Tabellen mit Node-RED](./SETUP.md)
 
 ### Version
 
