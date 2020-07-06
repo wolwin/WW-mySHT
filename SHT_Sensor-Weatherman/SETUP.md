@@ -1,4 +1,6 @@
-## WW-myHOME - Setup Node-RED - Weatherman
+# WW-mySHT - Setup Node-RED - Weatherman
+
+[Zurück zur Übersicht ...](../README.md)
 
 ### Funktion
 Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Wetterstation 'Weatherman' (Dr. Stall) durch Node-RED

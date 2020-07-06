@@ -1,4 +1,4 @@
-## WW-myHOME - Setup Node-RED - Datenbank
+## WW-mySHT - Setup Node-RED - Datenbank
 
 ### Funktion
 

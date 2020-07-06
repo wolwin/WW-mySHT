@@ -1,4 +1,4 @@
-## WW-myHOME - Setup Node-RED - Feinstaub
+## WW-mySHT - Setup Node-RED - Feinstaub
 
 ### Funktion
 Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Sensordaten der Feinstaub Messstation (https://luftdaten.info/) durch Node-RED

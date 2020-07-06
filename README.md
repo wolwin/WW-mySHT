@@ -1,14 +1,14 @@
-# WW-myHOME
+# WW-mySHT
 
 ## Übersicht
 
-der unterschiedlichen Tools für die Heimautomation:
+der unterschiedlichen <b>_S_</b>mart-<b>_H_</b>ome-<b>_T_</b>ools für die Heimautomation:
 
  | **Projekt** | **Beschreibung** |
  | --- | --- |
- | [Sensor‑Datenbank](./SHT_Sensor-Datenbank/README.md "Zeigen ...") | Erstellen der myHOME-Sensor-Datenbank mit Node-RED |
+ | [Sensor‑Datenbank](./SHT_Sensor-Datenbank/README.md "Zeigen ...") | Erstellen der Sensor-Datenbank mit Node-RED |
  | [Sensor‑Feinstaub](./SHT_Sensor-Feinstaub/README.md "Zeigen ...") | Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Feinstaub Messstation durch Node-RED |
- | [Sensor-Weatherman](./SHT_Sensor-Weatherman/README.md "Zeigen ...") | Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Wetterstation 'STALL - Weatherman' durch Node-RED |
+ | [Sensor‑Weatherman](./SHT_Sensor-Weatherman/README.md "Zeigen ...") | Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Wetterstation 'STALL - Weatherman' durch Node-RED |
 
 ## Andere Übersichten
 - 'WW-mySHP' - Smart-Home-Projekte - [Zeigen ...](https://github.com/wolwin/WW-mySHP/blob/master/README.md)
