@@ -42,9 +42,9 @@ node-red-start
 ```
 In den 'public' Ordner wird die Konfigurationsdatei 'myHOME_Devices_WM.csv' für den Weatherman und die Konfigurationsdatei 'myHOME_Devices_FS.csv' für das Feinstaub-Modul kopiert. Die Konfiguration der Devices wird in den CSV-Dateien vorgenommen und muss als erstes durchgeführt werden - detaillierte Angaben dazu finden sich hier:
 
-[Setup - Teil 3 - Konfiguration Weatherman Device](../SHT_Weatherman/SETUP.md#setup---teil-3---konfiguration-weatherman-device)
+[Setup - Teil 3 - Konfiguration Weatherman Device](./SHT_Weatherman/SETUP.md#setup---teil-3---konfiguration-weatherman-device)
 
-[Setup - Teil 3 - Konfiguration Feinstaub Device](../SHT_Feinstaub/SETUP.md#setup---teil-3---konfiguration-feinstaub-device)
+[Setup - Teil 3 - Konfiguration Feinstaub Device](./SHT_Feinstaub/SETUP.md#setup---teil-3---konfiguration-feinstaub-device)
 
 Wer direkt mit einer Standardeinstellung loslegen möchte, der kopiert
 
