@@ -1,0 +1,40 @@
+﻿# MQTT
+define Mosquitto MQTT 127.0.0.1:1883
+attr Mosquitto DbLogExclude .*
+attr Mosquitto room MQTT
+
+# MQTT - Feinstaub
+define MQTT_FS_101 MQTT_DEVICE
+setuuid MQTT_FS_101 5cbde68d-f33f-08a4-69a1-2e126b477fb5570f
+attr MQTT_FS_101 DbLogExclude .*
+attr MQTT_FS_101 IODev Mosquitto
+attr MQTT_FS_101 alias Feinstaub
+attr MQTT_FS_101 room MQTT
+attr MQTT_FS_101 stateFormat {sprintf("\
+Feinstaub Status : %s [%s]<br><br>\
+<b>Feinstaub</b><br>\
+PM2.5 : %.1f µg/m³<br>\
+PM10 : %.1f µg/m³<br><br>\
+<b>Temperatur</b><br>\
+Aussen : %.1f °C<br>\
+<br><b>Feuchte</b><br>\
+Aussen : %.1f %%<br>\
+<br><b>Luftdruck</b><br>\
+absolut : %.1f %s<br>\
+relativ NN : %.1f %s<br>\
+"\
+,myUtils_WM_Get_ReadingEntry($name, "status", "state"),myUtils_WM_Get_ReadingEntry($name, "status", "READ_TIME")\
+,myUtils_WM_Get_ReadingEntry($name, "fs_sds011_pm2_5", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "fs_sds011_pm10", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "fs_glb_temp", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "fs_glb_hum", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "fs_glb_baro", "READ_VALUE"),encode('UTF-8',myUtils_WM_Get_ReadingEntry($name, "fs_glb_baro", "DEV_VAL_UNIT"))\
+,myUtils_WM_Get_ReadingEntry($name, "fs_glb_baro_nn", "READ_VALUE"),encode('UTF-8',myUtils_WM_Get_ReadingEntry($name, "fs_glb_baro_nn", "DEV_VAL_UNIT"))\
+)}
+attr MQTT_FS_101 subscribeReading_data { main::myUtils_WM_Get_ReadingName( $hash, $name, $topic, $message, "DEV_TYP" ) } /myHOME/sensor/devices/Feinstaub
+attr MQTT_FS_101 subscribeReading_status /myHOME/sensor/devices/Feinstaub/state
+attr MQTT_FS_101 webCmd :
+# attr MQTT_FS_101 stateFormat transmission-state
+define MQTT_FS_101_status expandJSON MQTT_FS_101.*:.*:.{.*} (state)
+setuuid MQTT_FS_101_status 5cbde68d-f33f-08a4-ae0e-aa98183dd50146be
+attr MQTT_FS_101_status DbLogExclude .*

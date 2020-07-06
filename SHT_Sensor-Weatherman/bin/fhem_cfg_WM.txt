@@ -1,0 +1,76 @@
+﻿# MQTT
+define Mosquitto MQTT 127.0.0.1:1883
+attr Mosquitto DbLogExclude .*
+attr Mosquitto room MQTT
+
+# MQTT - Weatherman
+define MQTT_WM_100 MQTT_DEVICE
+setuuid MQTT_WM_100 5cbde68d-f33f-08a4-5dbc-5d2c896b5d612d71
+attr MQTT_WM_100 DbLogExclude .*
+attr MQTT_WM_100 IODev Mosquitto
+attr MQTT_WM_100 alias Weatherman
+attr MQTT_WM_100 room MQTT
+attr MQTT_WM_100 stateFormat {sprintf("\
+Weatherman Status : %s [%s]<br><br>\
+<b>Temperatur</b><br>\
+Aussen : %.1f °C<br>\
+Gefühlt : %.1f °C<br>\
+Taupunkt : %.1f °C<br>\
+<br><b>Feuchte</b><br>\
+Aussen : %.1f %% (%.1f g/m3)<br>\
+<br><b>Luftdruck</b><br>\
+absolut : %.1f %s<br>\
+relativ NN : %.1f %s<br>\
+Trend : %s<br>\
+<br><b>Regen</b><br>\
+Status (Melderwert) : %s (%d)<br>\
+Akt. Stärke : %.1f mm/h<br>\
+mm letzte 1h - letzte 24h - gestern : %.1f - %.1f - %.1f<br>\
+Regen-Std. heute : %.1f h<br>\
+<br><b>Wind</b><br>\
+Geschwindigkeit avg : %.1f m/s<br>\
+Geschwindigkeit peak : %.1f m/s<br>\
+Stärke : %d Bft<br>\
+Richtung : %s<br>\
+Richtung : %s °<br>\
+<br><b>Sonne</b><br>\
+Helligkeit : %.0f lux<br>\
+Sensor Temp : %.1f °C<br>\
+Sensor DiffTemp : %.1f °C<br>\
+Status : %s<br>\
+Sonnen-Std. heute : %.1f h<br>\
+Elevation : %.1f °<br>\
+Sonne Azimut : %.1f °<br>\
+"\
+,myUtils_WM_Get_ReadingEntry($name, "status", "state"),myUtils_WM_Get_ReadingEntry($name, "status", "READ_TIME")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_temp", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_temp_windchill", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_temp_dewpoint", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_hum_pro", "READ_VALUE"),myUtils_WM_Get_ReadingEntry($name, "wm_hum_abs", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_baro", "READ_VALUE"),encode('UTF-8',myUtils_WM_Get_ReadingEntry($name, "wm_baro", "DEV_VAL_UNIT"))\
+,myUtils_WM_Get_ReadingEntry($name, "wm_baro_nn", "READ_VALUE"),encode('UTF-8',myUtils_WM_Get_ReadingEntry($name, "wm_baro_nn", "DEV_VAL_UNIT"))\
+,myUtils_WM_Get_ReadingEntry($name, "wm_baro_trend", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_rain_status", "READ_VALUE"),myUtils_WM_Get_ReadingEntry($name, "wm_rain_activity", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_rain_intensity", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_rain_volume_1", "READ_VALUE"),myUtils_WM_Get_ReadingEntry($name, "wm_rain_volume_24", "READ_VALUE"),myUtils_WM_Get_ReadingEntry($name, "wm_rain_yesterday", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_rain_hours_24", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_wind_avg", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_wind_peak", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_wind_force", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_wind_direction", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_wind_dir", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_sun_lux", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_sun_temp", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_sun_temp_diff", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_sun_status", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_sun_today_hours", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_sun_elevation", "READ_VALUE")\
+,myUtils_WM_Get_ReadingEntry($name, "wm_sun_azimut", "READ_VALUE")\
+)}
+attr MQTT_WM_100 subscribeReading_data { main::myUtils_WM_Get_ReadingName( $hash, $name, $topic, $message, "DEV_TYP" ) } /myHOME/sensor/devices/Weatherman
+attr MQTT_WM_100 subscribeReading_status /myHOME/sensor/devices/Weatherman/state
+attr MQTT_WM_100 webCmd :
+# attr MQTT_WM_100 stateFormat transmission-state
+define MQTT_WM_100_status expandJSON MQTT_WM_100.*:.*:.{.*} (state)
+setuuid MQTT_WM_100_status 5cbde68d-f33f-08a4-754c-d454802dccb589a4
+attr MQTT_WM_100_status DbLogExclude .*

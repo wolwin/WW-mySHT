@@ -1,0 +1,33 @@
+﻿=======================================================================
+Uebersicht der Uebersetzungstabelle zwischen FS und myHOME Datenbank
+=======================================================================
+
+Erstellt: 01.11.2018 - Wolfram Winter
+   Stand: 23.12.2018 - Wolfram Winter
+          - Verifiziert
+
+=======================================================================
+
+# Feinstaub
+
+=======================================================================
+# myHOME DB-Bezeichner    FS Firmware 111
+=======================================================================
+fs_sys_id                 # esp8266id
+fs_sys_firmware           # software_version
+
+fs_sds011_pm2_5           # SDS_P1
+fs_sds011_pm10            # SDS_P2
+fs_temp                   # temperature
+fs_hum                    # humidity
+fs_bmp_temp               # BMP_temperature
+fs_bmp_baro               # BMP_pressure
+fs_bme280_temp            # BME280_temperature
+fs_bme280_hum             # BME280_humidity
+fs_bme280_baro            # BME280_pressure
+
+fs_samples                # samples
+fs_min_micro              # min_micro
+fs_max_micro              # max_micro
+fs_signal                 # signal
+=======================================================================

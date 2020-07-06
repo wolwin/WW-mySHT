@@ -1,0 +1,48 @@
+﻿=======================================================================
+Uebersicht der Uebersetzungstabelle zwischen FS und myHOME Datenbank
+=======================================================================
+
+Erstellt: 01.11.2018 - Wolfram Winter
+   Stand: 23.12.2018 - Wolfram Winter
+          - Verifiziert
+          10.05.2019 - Wolfram Winter
+          - Feinstaub Firmware 123B Verifizierung
+            - globale Platzhalter Temperatur, Luftfeuchte, Baro
+              - 'fs_glb_temp'
+              - 'fs_glb_hum'
+              - 'fs_glb_baro'    - FS Messung (Baro absolut)
+              - 'fs_glb_baro_nn' - FS Berechnungswert (Baro relativ)
+
+=======================================================================
+
+# Feinstaub
+
+=======================================================================
+# myHOME DB-Bezeichner    FS Firmware 111 / 123B
+=======================================================================
+fs_sys_id                 # esp8266id
+fs_sys_firmware           # software_version
+
+fs_sds011_pm2_5           # SDS_P1
+fs_sds011_pm10            # SDS_P2
+fs_temp                   # temperature
+fs_hum                    # humidity
+fs_bmp_temp               # BMP_temperature
+fs_bmp_baro               # BMP_pressure
+fs_bme280_temp            # BME280_temperature
+fs_bme280_hum             # BME280_humidity
+fs_bme280_baro            # BME280_pressure
+
+fs_samples                # samples
+fs_min_micro              # min_micro
+fs_max_micro              # max_micro
+fs_signal                 # signal
+=======================================================================
+
+Platzhalter fuer Temperatur, Luftfeuchte, Baro-Werte
+:
+-----------------------------------------------------
+fs_glb_temp               id_dev: xxx701
+fs_glb_hum                id_dev: xxx702
+fs_glb_baro               id_dev: xxx703
+fs_glb_baro_nn            id_dev: xxx704

@@ -1,0 +1,75 @@
+﻿=======================================================================
+Uebersicht der Uebersetzungstabelle zwischen WM und myHOME Datenbank
+=======================================================================
+
+Erstellt: 01.11.2018 - Wolfram Winter
+   Stand: 23.12.2018 - Wolfram Winter
+          - Verifiziert
+          10.05.2019 - Wolfram Winter
+          - Weatherman Firmware 107 Verifizierung
+            - Barometerwerte absolut und relativ gesetzt
+              - 'wm_baro'    - WM Messung (Baro absolut)
+              - 'wm_baro_nn' - WM Berechnungswert (Baro relativ)
+
+=======================================================================
+
+# Weatherman
+
+=================================================================================================
+# myHOME DB-Bezeichner  WM-Index     Firmware 58 stable  Firmware 86             Firmware 87 / 107
+=================================================================================================
+# Systeminfo                         # keine Aenderungen
+
+wm_sys_mac-adr          MAC-Adresse
+wm_sys_hm-ccu-ip        Homematic_CCU_ip
+wm_sys_wlan-ssid        WLAN_ssid
+wm_sys_wlan-signal-dbm  WLAN_Signal_dBm
+wm_sys_sec-seit-reset   sec_seit_reset
+wm_sys_zeitpunkt        zeitpunkt
+wm_sys_firmware         firmware
+=================================================================================================
+# vars
+
+wm_sys_ip               # name: 0:   w_ip                w_ip                    w_ip
+
+wm_temp                 # name: 1:   w_temperature       w_temperature           w_temperatur
+wm_temp_windchill       # name:21:   w_windchill         w_windchill             w_windchill
+wm_temp_dewpoint        # name: 9:   w_taupunkt          w_taupunkt              w_taupunkt
+wm_temp_sky             # name:14:                       w_himmeltemperatur      w_himmeltemperatur
+
+wm_hum_pro              # name: 2:   w_humidity          w_humidity              w_feuchte_rel
+wm_hum_abs              # name:17:   w_hum_abs           w_hum_abs               w_feuchte_abs
+
+wm_rain_activity        # name:18:   w_rain_activity     w_regensensor_wert      w_regensensor_wert
+wm_rain_status          # name: 7:   w_rain_status       w_regenmelder           w_regenmelder
+wm_rain_intensity       # name: 8:   w_rain_intensity    w_regenstaerke          w_regenstaerke
+wm_rain_volume_1        # name:19:   w_rain_volume_1     w_regen_letzte_h        w_regen_letzte_h
+wm_rain_volume_24       # name:20:   w_rain_volume_24    w_regen_mm_heute        w_regen_mm_heute
+wm_rain_yesterday       # name:27:   w_rain_yesterday    --> entfallen           w_regen_mm_gestern
+wm_rain_hours_24        # name:32:                       w_regenstunden_heute    w_regenstunden_heute
+
+wm_baro                 # name: 3:   w_barometer         w_barometer             w_barometer
+wm_baro_trend           # name:11:   w_barotrend         w_barotrend             w_barotrend
+
+wm_wind_avg             # name: 4:   w_wind_avg          w_wind_mittel           w_wind_mittel
+wm_wind_peak            # name: 5:   w_wind_peak         w_wind_spitze           w_wind_spitze
+wm_wind_force           # name:24:   w_windstaerke       w_windstaerke           w_windstaerke
+wm_wind_direction       # name:23:   w_wind_direction    w_windrichtung          w_windrichtung
+wm_wind_dir             # name: 6:   w_wind_dir          w_wind_dir              w_wind_dir
+
+wm_sun_lux              # name:10:   w_lux               w_lux                   w_lux
+wm_sun_temp             # name:15:   w_sun_temp          --> entfallen           w_sonnentemperatur
+wm_sun_temp_diff        # name:22:   w_diff_temp         w_sonne_diff_temp       w_sonne_diff_temp
+wm_sun_status           # name:16:   w_sonne_scheint     w_sonne_scheint         w_sonne_scheint
+wm_sun_elevation        # name:12:   w_elevation         w_elevation             w_elevation
+wm_sun_azimut           # name:13:   w_azimut            w_azimut                w_azimut
+wm_sun_today_hours      # name:26:                       w_sonnenstunden_heute   w_sonnenstunden_heute
+wm_sun_before_sunrise   # name:30:                       w_minuten_vor_sa        w_minuten_vor_sa
+wm_sun_before_sunset    # name:31:                       w_minuten_vor_su        w_minuten_vor_su
+
+wm_ground_hum           # name:25:                       w_bodenfeuchte          w_bodenfeuchte
+=================================================================================================
+
+Berechnungsdaten:
+-----------------
+wm_baro_nn              # name:701:  w_barometer         w_barometer             w_barometer
