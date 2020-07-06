@@ -1,7 +1,9 @@
 ## WW-mySHT - Weatherman
 
+[Zurück zur Übersicht ...](../README.md)
+
 ### Funktion
-Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Wetterstation 'Weatherman' (Dr. Stall) durch Node-RED
+Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Wetterstation 'STALL - Weatherman' durch Node-RED
 
 ### Details
 - Autarkes Teilmodul zur Übernahme / Abspeichern / MQTT-Deployment von Sensordaten

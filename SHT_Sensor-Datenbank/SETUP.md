@@ -1,6 +1,6 @@
 ## WW-mySHT - Setup Node-RED - Datenbank
 
-[Zurück zur Übersicht ...](../README.md)<br>[Zurück zum Readme ...](./README.md)
+[Zurück zur Übersicht ...](../README.md)<br>[Zurück zu ' Readme Node-RED - Datenbank' ...](./README.md)
 
 ### Funktion
 
@@ -120,12 +120,7 @@ angeklickt werden - bei Erfolg erscheint die Meldung: 'Succesfully injected: tim
 Damit ist die myHOME MariaDB betriebsbereit.
 
 ### Version
-
-1.1.0.0 - 2019-05-10
-- Fortschreibung - siehe 'Readme - SQL-Details zur WW-myHOME-Datenbank'
-
-1.0.0.0 - 2018-12-27
-- Erstausgabe
-
-
-*<b>Befindet sich z.Z. noch in der Weiterentwicklung</b>*
+- 1.1.0.0 - 2019-05-10
+  - Fortschreibung - siehe 'Readme - SQL-Details zur WW-myHOME-Datenbank'
+- 1.0.0.0 - 2018-12-27
+  - Erstausgabe
