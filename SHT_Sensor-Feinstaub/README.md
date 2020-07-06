@@ -32,6 +32,9 @@
   - payload_mqtt: 'normierte' Device-Objekte zur Übergabe an MQTT-Server
 - Watchdog und JSON-Fehlerbehandlung mit Statusausgabe
 
+### Setup
+[Setup der 'Feinstaub' Sensordaten mit Node-RED](./SETUP.md)
+
 ### Node-RED - GUI
 
 Gesamter Flow für alle Optionen mit Debug Optionen:

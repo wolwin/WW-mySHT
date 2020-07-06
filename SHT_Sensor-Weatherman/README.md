@@ -34,6 +34,9 @@
   - payload_mqtt: 'normierte' Device-Objekte zur Übergabe an MQTT-Server
 - Watchdog und JSON-Fehlerbehandlung mit Statusausgabe
 
+### Setup
+[Setup der 'STALL-Weatherman' Sensordaten mit Node-RED](./SETUP.md)
+
 ### Node-RED - GUI
 
 ![WW-mySHT - Sensor-Weatherman](./img/NodeRED_GUI_Weatherman_1.1.jpg)
