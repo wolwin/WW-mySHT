@@ -212,9 +212,7 @@ Man kann das Modul auch als reines 'Feinstaub to MQTT' Modul ohne jegliche Anzei
 Nach der Bereinigung wird mit dem 'Deploy' Knopf die Änderung veröffentlicht.
 
 ### Version
-
-1.1.0.0 - 2019-05-10
-- Anpassung für barometrische Höhenkorrektur 'myBaro_NN'
-
-1.0.0.0 - 2018-12-26
-- Erstausgabe
+- 1.1.0.0 - 2019-05-10
+  - Anpassung für barometrische Höhenkorrektur 'myBaro_NN'
+- 1.0.0.0 - 2018-12-26
+  - Erstausgabe
