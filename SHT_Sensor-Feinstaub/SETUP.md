@@ -83,7 +83,7 @@ Die CSV-Dateien sind vorkonfiguriert und können sofort benutzt werden. Bitte di
 
 Erläuterungen zu den CSV-Spalten finden sich in der Beschreibung:
 
-[Datenbank-Tabelle - SENSOR_DEVICES](../myHOME%20-%20Datenbank/README.md#datenbank-tabelle---sensor_devices)
+[Datenbank-Tabelle - SENSOR_DEVICES](../SHT_Sensor-Datenbank/README.md#datenbank-tabelle---sensor_devices)
 
 Anpassung der barometrischen Ortshöhen-Beschreibung "hPa (190 m ü. N.N.)" in der Zeile 23 der Datei 'myHOME_Devices_xxx.csv' von '190' auf den N.N. Höhenwert, auf den der gemessene barometrische Wert reduziert werden soll.
 
@@ -136,7 +136,7 @@ Kopieren der angepaßten 'myHOME_Devices_xxx.csv' Dateien nach '/home/pi/.node-r
 
 Für die Standard-Version mit Datenbank Option und für die Maximal-Version muss die 'MariaDB SQL-Datenbank' installiert und konfiguriert werden:
 
-[WW-myHOME - Datenbank - Setup.md](../myHOME%20-%20Datenbank/README.md)
+[WW-mySHT - Sensor-Datenbank - Setup.md](../SHT_Sensor-Datenbank/README.md)
 
 ### Setup - Teil 5 - Node-RED Feinstaub
 

@@ -58,7 +58,7 @@ und / oder
 
 Kopieren des Datenbank Node-RED Moduls, indem die Datei 'myHOME_FLOW_Datenbank_xxx.md' auf die Flow Ebene von Node-RED im Explorer gezogen wird.
 
-Im Flow 'myHOME - Datenbank' stehen im ersten Beschreibungsnode '01 - ...' die SQL-Befehle, mit denen die myHOME-Datenbank manuell angelegt werden muss:
+Im Flow 'myHOME - Datenbank' stehen im ersten Beschreibungsnode '01 - ...' die SQL-Befehle, mit denen die Sensor-Datenbank manuell angelegt werden muss:
 
 ```
 # Eine vorhandene myHOME-Datenbank loeschen
@@ -91,7 +91,7 @@ MariaDB [(none)]> exit
 Bye
 ```
 
-Damit ist die myHOME-Datenbank angelegt.
+Damit ist die Sensor-Datenbank angelegt.
 
 Als nächstes wird - wie im Beschreibungsnode '02 - ...' aufgeführt - der 'myHOME' Node mit der MariaDB Datenbank verbunden:
 - den 'myHOME' Node mit einem Doppelklick öffnen und die 'Database myHOME' editieren (Stift anklicken)
@@ -117,10 +117,10 @@ Abschließend werden noch die CSV-Konfigurationen in die Datenbank geladen, inde
 
 angeklickt werden - bei Erfolg erscheint die Meldung: 'Succesfully injected: timestamp'.
 
-Damit ist die myHOME MariaDB betriebsbereit.
+Damit ist die 'myHOME' MariaDB betriebsbereit.
 
 ### Version
 - 1.1.0.0 - 2019-05-10
-  - Fortschreibung - siehe 'Readme - SQL-Details zur WW-myHOME-Datenbank'
+  - Fortschreibung - siehe 'Readme - SQL-Details zur Sensor-Datenbank'
 - 1.0.0.0 - 2018-12-27
   - Erstausgabe

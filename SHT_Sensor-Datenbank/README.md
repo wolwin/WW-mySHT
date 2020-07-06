@@ -96,7 +96,7 @@ READ_FLAG       internes Flag           0 ... 255
   Datum W3C       2018-11-04T10:28:24+00:00
 ```
 
-- Festlegung myHOME Datumsformat:
+- Festlegung Sensor Datumsformat:
 ```
   ---------------------------------------------------------------------------
   Als READ_TIME-Datumsformat (String) wird festgelegt:
@@ -121,6 +121,6 @@ READ_FLAG       internes Flag           0 ... 255
 
 ### Version
 - 1.1.0.0 - 2019-05-10
-  - Fortschreibung - siehe 'SQL-Details zur WW-myHOME-Datenbank'
+  - Fortschreibung - siehe 'SQL-Details zur Sensor-Datenbank'
 - 1.0.0.0 - 2018-12-23
   - Erstausgabe

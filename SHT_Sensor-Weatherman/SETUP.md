@@ -87,7 +87,7 @@ Die CSV-Dateien sind vorkonfiguriert und können sofort benutzt werden. Bitte di
 
 Erläuterungen zu den CSV-Spalten finden sich in der Beschreibung:
 
-[Datenbank-Tabelle - SENSOR_DEVICES](../myHOME%20-%20Datenbank/README.md#datenbank-tabelle---sensor_devices)
+[Datenbank-Tabelle - SENSOR_DEVICES](../SHT_Sensor-Datenbank/README.md#datenbank-tabelle---sensor_devices)
 
 Für den Weatherman werden die im JSON-String übergebenen 'name'-Bezeichnungen neu 'normiert' - damit braucht keine Code-Anpassung der Folge-Prozesse mehr erfolgen, wenn bei einer Firmware-Änderung die 'homematic_name'-Einträge geändert werden - bei den Folgeprozessen bleiben die festgelegten Device Bezeichner und Zuordnungen erhalten:
 
@@ -138,7 +138,7 @@ Kopieren der angepaßten 'myHOME_Devices_xxx.csv' Dateien nach '/home/pi/.node-r
 
 Für die Standard-Version mit Datenbank Option und für die Maximal-Version muss die 'MariaDB SQL-Datenbank' installiert und konfiguriert werden:
 
-[WW-myHOME - Datenbank - Setup.md](../myHOME%20-%20Datenbank/README.md)
+[WW-mySHT - Sensor-Datenbank - Setup.md](../SHT_Sensor-Datenbank/README.md)
 
 ### Setup - Teil 5 - Node-RED Weatherman
 
