@@ -1,8 +1,11 @@
 ## WW-mySHT - Setup Node-RED - Datenbank
 
+[Zurück zur Übersicht ...](../README.md)
+[Zurück zum Readme ...](./README.md)
+
 ### Funktion
 
-Erstellen der myHOME-Datenbank Tabellen mit Node-RED
+Setup der Sensor-Datenbank Tabellen mit Node-RED
 
 ### Allgemein
 
