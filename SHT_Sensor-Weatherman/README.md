@@ -1,4 +1,4 @@
-## WW-mySHT - Weatherman
+# WW-mySHT - Weatherman
 
 [Zurück zur Übersicht ...](../README.md)
 
@@ -36,34 +36,32 @@
 
 ### Node-RED - GUI
 
-![Node-RED - GUI -  WW-myHOME - Weatherman](./img/NodeRED_GUI_Weatherman_1.1.jpg)
+![WW-mySHT - Sensor-Weatherman](./img/NodeRED_GUI_Weatherman_1.1.jpg)
 
 ### Node-RED - FLOW
 
 Gesamter Flow für alle Optionen mit Debug Möglichkeiten:
 
-![Node-RED - FLOW -  WW-myHOME - Weatherman](./img/NodeRED_FLOW_Weatherman_1.1.jpg)
+![WW-mySHT - Sensor-Weatherman](./img/NodeRED_FLOW_Weatherman_1.1.jpg)
 
 Flow für reine Node-RED GUI-Darstellung über MQTT:
 
-![Node-RED - FLOW -  WW-myHOME - Weatherman - MQTT](./img/NodeRED_FLOW_Weatherman_MQTT_1.1.jpg)
+![WW-mySHT - Sensor-Weatherman](./img/NodeRED_FLOW_Weatherman_MQTT_1.1.jpg)
 
 ### MQTT Weatherman in FHEM
 
-Weatherman Daten in FHEM über MQTT Broker:
+'STALL-Weatherman' Daten in FHEM über MQTT Broker:
 
-![Node-RED - Weatherman - MQTT - FHEM](./img/FHEM_Weatherman.jpg)
+![WW-mySHT - Sensor-Weatherman](./img/FHEM_Weatherman.jpg)
 
 ### Hardware Weatherman
 
-Weatherman (oben) mit Feinstaub-Modul (unten)
+'STALL-Weatherman' (oben) mit Feinstaub-Modul (unten)
 
-![Hardware - Weatherman](./img/Hardware_Weatherman_Feinstaub.jpg)
+![WW-mySHT - Sensor-Weatherman](./img/Hardware_Weatherman_Feinstaub.jpg)
 
 ### Version
-
-1.1.0.0 - 2019-05-10
-- Aktualisierung und Verifikation für Firmware 107
-
-1.0.0.0 - 2018-12-07
-- Erstausgabe
+- 1.1.0.0 - 2019-05-10
+  - Aktualisierung und Verifikation für Firmware 107
+- 1.0.0.0 - 2018-12-07
+  - Erstausgabe

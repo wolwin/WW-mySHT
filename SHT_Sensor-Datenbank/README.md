@@ -19,7 +19,7 @@ Erstellen der myHOME-Sensor-Datenbank mit Node-RED
 
 Gesamter Flow für alle Optionen:
 
-![Node-RED - FLOW -  WW-myHOME - Datenbank](./img/NodeRED_FLOW_Datenbank_1.1.jpg)
+![WW-mySHT - Sensor-Datenbank](./img/NodeRED_FLOW_Datenbank_1.1.jpg)
 
 ### Datenbank - SQL-Details
 
@@ -120,9 +120,7 @@ READ_FLAG       internes Flag           0 ... 255
 [Setup der Sensor-Datenbank Tabellen mit Node-RED](./SETUP.md)
 
 ### Version
-
-1.1.0.0 - 2019-05-10
-- Fortschreibung - siehe 'SQL-Details zur WW-myHOME-Datenbank'
-
-1.0.0.0 - 2018-12-23
-- Erstausgabe
+- 1.1.0.0 - 2019-05-10
+  - Fortschreibung - siehe 'SQL-Details zur WW-myHOME-Datenbank'
+- 1.0.0.0 - 2018-12-23
+  - Erstausgabe
