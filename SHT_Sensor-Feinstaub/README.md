@@ -1,4 +1,4 @@
-# WW-mySHT - Feinstaub
+# WW-mySHT - Sensor-Feinstaub
 
 [Zurück zur Übersicht ...](../README.md)
 

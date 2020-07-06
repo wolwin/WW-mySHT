@@ -1,4 +1,4 @@
-# WW-mySHT - Weatherman
+# WW-mySHT - Sensor-Weatherman
 
 [Zurück zur Übersicht ...](../README.md)
 
