@@ -75,11 +75,10 @@ maxretry = 3
 ```
 
   - Erläuterung:
-
-          - Die APC USV mit dem NUT-Device Namen 'ups' wird über den USB-Port 'automatisch' mit dem Treiber 'usbhid‑ups' eingebunden. Die untere Schwelle der Batterie-Kapazität wird mit 'lowbatt' auf 33% gesetzt, damit die USV nach Wiederkehren der Stromversorgung direkt starten kann, ohne vorher lange die USV-Batterie erst laden zu müssen.
-          - Mit dem 'offdelay' Eintrag wird der Zeitraum (in Sekunden) für das Abschalten der UPS nach dem 'kill power'-Befehl definiert. Mit 120 Sekunden ist ausreichend Zeit, um die 'RaspberryMatic' definiert herunterzufahren, bevor die USV sich ausschaltet – der Wert kann bei Bedarf geändert werden.
-          - Mit dem 'ondelay' Eintrag wird die Zeit (in Sekunden) angegeben, die von der USV nach dem Wiederkehren des Stroms gewartet wird, bis die angeschlossenen Geräte wieder mit Strom versorgt werden. Der Wert von 'ondelay' muß größer als der Wert von 'offdelay' sein.
-          - Optional kann mit 'ignorelb' der USV-Treiber das Flag für niedrigen Batteriezustand, welches von der USV gemeldet wird, ignorieren - einige USV-Geräte schalten sich fast sofort nach dem Setzen dieses Flags aus oder melden dies, sobald das Stromnetz ausfällt. Stattdessen werden die folgenden 'override' Bedingungen verwendet, um festzustellen, wann die Batterie schwach ist.
+    - Die APC USV mit dem NUT-Device Namen 'ups' wird über den USB-Port 'automatisch' mit dem Treiber 'usbhid‑ups' eingebunden. Die untere Schwelle der Batterie-Kapazität wird mit 'lowbatt' auf 33% gesetzt, damit die USV nach Wiederkehren der Stromversorgung direkt starten kann, ohne vorher lange die USV-Batterie erst laden zu müssen.
+    - Mit dem 'offdelay' Eintrag wird der Zeitraum (in Sekunden) für das Abschalten der UPS nach dem 'kill power'-Befehl definiert. Mit 120 Sekunden ist ausreichend Zeit, um die 'RaspberryMatic' definiert herunterzufahren, bevor die USV sich ausschaltet – der Wert kann bei Bedarf geändert werden.
+    - Mit dem 'ondelay' Eintrag wird die Zeit (in Sekunden) angegeben, die von der USV nach dem Wiederkehren des Stroms gewartet wird, bis die angeschlossenen Geräte wieder mit Strom versorgt werden. Der Wert von 'ondelay' muß größer als der Wert von 'offdelay' sein.
+    - Optional kann mit 'ignorelb' der USV-Treiber das Flag für niedrigen Batteriezustand, welches von der USV gemeldet wird, ignorieren - einige USV-Geräte schalten sich fast sofort nach dem Setzen dieses Flags aus oder melden dies, sobald das Stromnetz ausfällt. Stattdessen werden die folgenden 'override' Bedingungen verwendet, um festzustellen, wann die Batterie schwach ist.
 
 
 #### upsmon.conf
