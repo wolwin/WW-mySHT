@@ -83,7 +83,7 @@ Die 'NUT'- Binär- und Konfigurationsdateien liegen bei der 'RaspberryMatic' an 
   | Binär |	/lib/nut/ | /usr/sbin/ |
   | Konfiguration | /etc/nut/ | /usr/local/etc/config/nut/ |
 
-### Beispiel der 'RaspberryMatic' mit den 'Network UPS Tools' bei Stromausfall
+### Beispiel-Szenario 'RaspberryMatic' und 'Network UPS Tools' bei Stromausfall
 
 In diesem Email-Verlauf Beispiel eines Stromausfalls werden alle hier vorgestellten Konfigurationen gemeinsam genutzt. Dabei greifen mehrere Skripte ineinander:
 
