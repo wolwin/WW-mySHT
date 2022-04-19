@@ -6,7 +6,7 @@ der unterschiedlichen <b>_S_</b>mart-<b>_H_</b>ome-<b>_T_</b>ools für die Heima
 
  | **Projekt** | **Beschreibung** |
  | --- | --- |
- | [RaspberryMatic und Email‑Addon](./SHT_RM_Email/README.md "Zeigen ...") | 'RaspberryMatic' mit 'HM-Email-Addon' konfiguriert für den Versand von System-Meldungen |
+ | [RaspberryMatic und HM‑Email‑Addon](./SHT_RM_Email/README.md "Zeigen ...") | 'RaspberryMatic' mit 'HM-Email-Addon' konfiguriert für den Versand von System-Meldungen |
  | [RaspberryMatic und NUT](./SHT_RM_Nut/README.md "Zeigen ...") | Einbinden einer USV in die 'RaspberryMatic' mit den 'Network UPS Tools' |
  | [Sensor‑Datenbank](./SHT_Sensor-Datenbank/README.md "Zeigen ...") | Erstellen der Sensor-Datenbank mit Node-RED |
  | [Sensor‑Feinstaub](./SHT_Sensor-Feinstaub/README.md "Zeigen ...") | Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Feinstaub Messstation durch Node-RED |
