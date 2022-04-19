@@ -122,7 +122,7 @@ Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwache
 
 ### Setup 'RaspberryMatic' als 'NUT-Client'
 
-- Weiter zu: [Vollständige Konfiguration 'RaspberryMatic' als 'NUT-Client' ...](./bin/RM_NUT_Client)
+- Weiter zu: ['RaspberryMatic' - 'NUT-Client' - vollständige Konfigurationsdateien ...](./bin/RM_NUT_Client)
 
 - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
 

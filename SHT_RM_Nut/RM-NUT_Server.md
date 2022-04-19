@@ -348,9 +348,9 @@ Esac
 
 ### Setup 'RaspberryMatic' als 'NUT-Server'
 
-  - Weiter zu: [Vollständige Konfiguration 'RaspberryMatic' als 'NUT-Server' ...](./bin/RM_NUT_Server)
+- Weiter zu: ['RaspberryMatic' - 'NUT-Server' - vollständige Konfigurationsdateien ...](./bin/RM_NUT_Server)
 
-  - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
+- Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
 
 ### Historie
 - 2022-04-18 - Erstveröffentlichung
