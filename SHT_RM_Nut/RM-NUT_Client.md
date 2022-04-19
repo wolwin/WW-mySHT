@@ -93,10 +93,10 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
       ```
 
 ##### upssched.conf
-  Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'upssched.conf']()
+  Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'upssched.conf'](./RM-NUT_Server.md#upsschedconf)
 
 ##### nut_schedule.sh
-  Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'nut_schedule.sh']()
+  Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'nut_schedule.sh'](./RM-NUT_Server.md#nut_schedulesh)
 
 ##### Abschluß Konfiguration 'NUT-Client'
 Nach der Konfiguration die 'RaspberryMatic' per WebUI neu starten oder den 'NUT' Dienst mittels SSH und folgendem Kommando neustarten:
