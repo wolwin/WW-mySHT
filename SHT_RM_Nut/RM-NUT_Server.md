@@ -73,6 +73,7 @@ maxretry = 3
     override.battery.charge.warning = 50
     override.battery.runtime.low = 300
 ```
+
   - Erläuterung:
 
           - Die APC USV mit dem NUT-Device Namen 'ups' wird über den USB-Port 'automatisch' mit dem Treiber 'usbhid‑ups' eingebunden. Die untere Schwelle der Batterie-Kapazität wird mit 'lowbatt' auf 33% gesetzt, damit die USV nach Wiederkehren der Stromversorgung direkt starten kann, ohne vorher lange die USV-Batterie erst laden zu müssen.
