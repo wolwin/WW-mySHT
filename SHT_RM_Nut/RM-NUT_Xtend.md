@@ -10,7 +10,7 @@
 
 - Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](./RM-NUT_HM-Mon.md)
 
-### 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server)
+### IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server)
 
 Gerade im Bereich des 'Power Managements' macht es Sinn, Überblick über den Verlauf eines Stromausfalls zu haben. Als Ansatz wurde für die 'RaspberryMatic' der Versand per Email gewählt. Mit Hilfe des ['HM-Email-Addon'](https://github.com/homematic-community/hm_email) und seiner Templates lassen sich strukturierte System- und Fehler-Meldungen per Email versenden. Eine ausführliche Installation- und Konfiguration-Anleitung findet sich hier:
 

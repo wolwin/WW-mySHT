@@ -10,7 +10,7 @@
 
 - Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](./RM-NUT_HM-Mon.md)
 
-### Funktion
+### I.) 'RaspberryMatic' und 'Network UPS Tools'
 Ausgangspunkt ist die 'RaspberryMatic' in der Release-Version 3.53.30 vom 24.01.2020 auf einem RPI3-System, auf dem eine 'NUT-Client' bzw. eine 'NUT-Server' Installation mit einer 'APC Back-UPS CS 650' vorgenommen wird. Jeweils aktuelle 'RaspberryMatic' Versionen für unterschiedliche Hardwareplattformen finden sich hier:
 
 - [Link 'RaspberryMatic'](https://github.com/jens-maus/RaspberryMatic/)

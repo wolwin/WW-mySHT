@@ -10,7 +10,7 @@
 
 - Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](./RM-NUT_Xtend.md)
 
-### 'RaspberryMatic' und 'NUT' Monitoring (Client und Server)
+### V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server)
 
 Wie in den vorherigen Kapiteln gezeigt, kann der 'NUT-Server' so konfiguriert werden, dass er eigenständig 'NUT'-Systemmeldungen u.a. als Email versenden kann (siehe 'nut_notify.sh' und / oder 'upssched.conf'). Es ist aber gewünscht, die 'NUT'-Events und -Informationen innerhalb der 'HomeMatic' zu benutzen.
 

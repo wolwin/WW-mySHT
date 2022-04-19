@@ -10,7 +10,7 @@
 
 - Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](./RM-NUT_HM-Mon.md)
 
-### 'RaspberryMatic' als 'NUT-Server' konfigurieren
+### III.) 'RaspberryMatic' als 'NUT-Server' konfigurieren
 
 Ist die 'RaspberryMatic' mit ihrer Stromversorgung an eine USV angeschlossen, die von keinem 'NUT-Server' gemanagt wird, dann wird die 'RaspberryMatic' als 'NUT-Server' konfiguriert. Die Konfigurationsdateien können mit 'WinSCP' editiert werden.
 
