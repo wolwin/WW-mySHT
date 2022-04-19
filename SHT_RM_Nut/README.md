@@ -87,9 +87,11 @@ Die 'NUT'- Binär- und Konfigurationsdateien liegen bei der 'RaspberryMatic' an 
 
 In diesem Email-Verlauf Beispiel eines Stromausfalls werden alle hier vorgestellten Konfigurationen gemeinsam genutzt. Dabei greifen mehrere Skripte ineinander:
 
+- Kennzeichnung:
   - In *ROT*: 'HomeMatic' Skripte, die beim Hoch- und Herunterfahren der 'RaspberryMatic' ausgeführt werden (Betreff: ### SYSTEM ###).
   - In *BRAUN*: 'NUT' Skripte, die bei 'NUT-Events' ausgeführt werden (Betreff: ### NUT-USV ###)
   - In *BLAU*: 'HomeMatic' Skripte, die auf 'NUT-Server' Monitor Änderungen reagieren (Betreff: ### USV ###).
+
 
 - Bei Stromausfall:
 
