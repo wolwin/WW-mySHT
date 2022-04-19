@@ -30,9 +30,9 @@ Eine detaillierte Erläuterung (englisch) zur 'NUT' Konfiguration findet sich in
 ### Ablauf und Systematik bei einem Stromausfall unter Verwendung der 'Network UPS Tools'
 
 - <b> Ausfall der Hauptstromversorgung tritt auf:</b>
- - Das USV-Gerät schaltet die Stromversorgung automatisch auf Batteriebetrieb um.
- - Das USV-Gerät benachrichtigt den 'NUT-Server' mit einer 'On Battery'-Ereignismeldung.
- - Der 'NUT-Server' wiederum benachrichtigt die 'NUT-Clients' mit einer 'On Battery'-Ereignismeldung.
+  - Das USV-Gerät schaltet die Stromversorgung automatisch auf Batteriebetrieb um.
+  - Das USV-Gerät benachrichtigt den 'NUT-Server' mit einer 'On Battery'-Ereignismeldung.
+  - Der 'NUT-Server' wiederum benachrichtigt die 'NUT-Clients' mit einer 'On Battery'-Ereignismeldung.
 
 
 - <b> Der Ausfall der Hauptstromversorgung hält an und die UPS-Batterie ist fast leer:</b>
@@ -87,12 +87,9 @@ Die 'NUT'- Binär- und Konfigurationsdateien liegen bei der 'RaspberryMatic' an 
 
 In diesem Email-Verlauf Beispiel eines Stromausfalls werden alle hier vorgestellten Konfigurationen gemeinsam genutzt. Dabei greifen mehrere Skripte ineinander:
 
-  - In *ROT*:
-      - 'HomeMatic' Skripte, die beim Hoch- und Herunterfahren der 'RaspberryMatic' ausgeführt werden (Betreff: ### SYSTEM ###).
-  - In *BRAUN*:
-      - 'NUT' Skripte, die bei 'NUT-Events' ausgeführt werden (Betreff: ### NUT-USV ###)
-  - In *BLAU*:
-      - 'HomeMatic' Skripte, die auf 'NUT-Server' Monitor Änderungen reagieren (Betreff: ### USV ###).
+  - In *ROT*: 'HomeMatic' Skripte, die beim Hoch- und Herunterfahren der 'RaspberryMatic' ausgeführt werden (Betreff: ### SYSTEM ###).
+  - In *BRAUN*: 'NUT' Skripte, die bei 'NUT-Events' ausgeführt werden (Betreff: ### NUT-USV ###)
+  - In *BLAU*: 'HomeMatic' Skripte, die auf 'NUT-Server' Monitor Änderungen reagieren (Betreff: ### USV ###).
 
 - Bei Stromausfall:
 
