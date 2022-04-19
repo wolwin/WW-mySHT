@@ -1,0 +1,175 @@
+==================================================================
+sys_USV-State-Email
+Bei USV-Status Änderung Versand Email-Benachrihtigung
+==================================================================
+
+Bedingung: Wenn...
+ - Systemzustand  sv_USV_ups.status  nicht bei  xyz  bei Aktualisierung auslösen
+
+Aktivität: Dann...  Haken  Vor dem Ausführen alle laufenden Verzögerungen für diese Aktivitäten beenden (z.B. Retriggern).
+ - Skript  [sys_USV-State-Email]  sofort
+
+==================================================================
+Anmerkung:
+Bei jeder 'NUT' Statusänderung versendet das Skript eine entsprechende Email
+(siehe auch 'nut_schedule.sh'). Es wurden im Skript die 'USV_State' der
+'APC Back-UPS CS 650' benutzt – bei anderen USVen kommen evtl. andere
+Zusammenstellungen der Status-Kurzbezeichnungen vor. Es müßten dann die
+Bezeichnugen geändert oder das Skript universieller gestaltet werden.
+
+==================================================================
+
+!
+! sys_USV-State-Werteänderung per Email versenden
+!
+! Version 01.04.2022 - by wolwin - (Creative Commons)
+!
+
+object src = dom.GetObject("$src$");
+
+! object src = dom.GetObject("sv_USV_ups.status").Value();
+
+if (src) {
+  if (src.Value() != src.LastValue()) {
+
+    ! nur bei Änderung von $src$ = sv_USV_ups.status
+
+    var USV_state     = dom.GetObject("sv_USV_ups.status").Value();
+    var USV_load      = 1 * dom.GetObject("sv_USV_ups.load").Value();
+    var USV_charge    = 1 * dom.GetObject("sv_USV_battery.charge").Value();
+    var USV_runtime_s = dom.GetObject("sv_USV_battery.runtime_s").Value();
+
+    string USV_Status = "USV-Status : ";
+    string USV_Detail = "USV-Detail : ";
+    string USV_Modus  = "USV-Modus  : ";
+    string USV_Text   = "";
+
+    string stdout;
+    string stderr;
+
+    ! USV_state = "OL";
+    ! USV_state = "ALARM OL";
+    ! USV_state = "OL CHRG";
+    ! USV_state = "OL LB";
+    ! USV_state = "OL CHRG LB";
+    ! USV_state = "OB";
+    ! USV_state = "OB DISCHRG";
+    ! USV_state = "LB";
+    ! USV_state = "FSD";
+    ! USV_state = "ACCESS-DENIED";
+    ! USV_state = "DISCONNECTED";
+    ! USV_state = "xxx";
+
+    if (USV_state) {
+
+      USV_Status = USV_Status # USV_state;
+
+      dom.GetObject("sv_EM-SUBJ-PRE").State(15);
+      dom.GetObject("sv_EM-SUBJ").State(USV_state);
+
+      if (USV_state.Substr(0, 6) == "ALARM ") {
+        USV_state = USV_state.Substr(6, USV_state.Length());
+      }
+
+      if (USV_state == "OL") {
+        ! USV-Status - OL
+        ! USV-Detail - Batterie: 100% geladen - Laufzeit: 00:xx:yy Stunden
+        ! USV-Modus  - Netzbetrieb
+        USV_Detail = USV_Detail # "Batterie: " # USV_charge # "% geladen - Laufzeit: " # USV_runtime_s # " Stunden";
+        USV_Modus  = USV_Modus  # "Netzbetrieb";
+
+      } else {
+        if (USV_state == "OL CHRG") {
+          ! USV-Status - OL CHRG
+          ! USV-Detail - Batterie wird geladen: xx% - Laufzeit: 00:xx:yy Stunden
+          ! USV-Modus  - Netzbetrieb
+          USV_Detail = USV_Detail # "Batterie wird geladen: " # USV_charge # "% - Laufzeit: " # USV_runtime_s # " Stunden";
+          USV_Modus  = USV_Modus  # "Netzbetrieb";
+
+        } else {
+          if (USV_state == "OL LB") {
+            ! USV-Status - OL LB
+            ! USV-Detail - schwache Batterie: xx% geladen - Laufzeit: 00:xx:yy Stunden
+            ! USV-Modus  - Netzbetrieb
+            USV_Detail = USV_Detail # "schwache Batterie: " # USV_charge # "% geladen - Laufzeit: " # USV_runtime_s # " Stunden";
+            USV_Modus  = USV_Modus  # "Netzbetrieb";
+
+          } else {
+            if (USV_state == "OL CHRG LB") {
+            ! USV-Status - OL CHRG LB
+            ! USV-Detail - schwache Batterie wird geladen: xx% - Laufzeit: 00:xx:yy Stunden
+            ! USV-Modus  - Netzbetrieb
+            USV_Detail = USV_Detail # "schwache Batterie wird geladen: " # USV_charge # "% - Laufzeit: " # USV_runtime_s # " Stunden";
+            USV_Modus  = USV_Modus  # "Netzbetrieb";
+
+            } else {
+              if (USV_state.Substr(0, 2) == "OB") {
+                ! USV-Status - OB
+                ! USV-Detail - Batterie: xx% geladen - Laufzeit: 00:xx:yy Stunden
+                ! USV-Modus  - Batteriebetrieb - Stromausfall
+                USV_Detail = USV_Detail # "Batterie: " # USV_charge # "% geladen - Laufzeit: " # USV_runtime_s # " Stunden";
+                USV_Modus  = USV_Modus  # "Batteriebetrieb - Stromausfall";
+
+              } else {
+                if (USV_state == "LB") {
+                  ! USV-Status - LB
+                  ! USV-Detail - Batterie ist !! leer !! : xx% geladen - Laufzeit: 00:xx:yy Stunden
+                  ! USV-Modus  - Batteriebetrieb - Stromausfall
+                  USV_Detail = USV_Detail # "Batterie ist !! leer !! : " # USV_charge # "% geladen - Laufzeit: " # USV_runtime_s # " Stunden";
+                  USV_Modus  = USV_Modus  # "Batteriebetrieb - Stromausfall";
+
+                } else {
+                  if (USV_state.Substr(0, 3) == "FSD") {
+                    ! USV-Status - FSD
+                    ! USV-Detail - Batterie: xx% geladen - Laufzeit: 00:xx:yy Stunden
+                    ! USV-Modus  - 'Forced Shutdown' - Erzwungene Abmeldung und Herunterfahren
+                    USV_Detail = USV_Detail # "Batterie ist !! leer !! : " # USV_charge # "% geladen - Laufzeit: " # USV_runtime_s # " Stunden";
+                    USV_Modus  = USV_Modus  # "'Forced Shutdown' - Erzwungene Abmeldung und Herunterfahren";
+
+                  } else {
+                    if (USV_state == "ACCESS-DENIED") {
+                      ! USV-Status - ACCESS-DENIED
+                      ! USV-Detail - Zugriff verweigert
+                      ! USV-Modus  - unbekannt
+                      USV_Detail = USV_Detail # "Zugriff verweigert";
+                      USV_Modus  = USV_Modus  # "unbekannt";
+
+                    } else {
+                      if (USV_state == "DISCONNECTED") {
+                        ! USV-Status - DISCONNECTED
+                        ! USV-Detail - USV ist nicht verbunden
+                        ! USV-Modus  - unbekannt
+                        USV_Detail = USV_Detail # "USV ist nicht verbunden";
+                        USV_Modus  = USV_Modus  # "unbekannt";
+
+                      } else {
+                        ! USV-Status - xxx
+                        ! USV-Detail - USV ist nicht verbunden
+                        ! USV-Modus  - unbekannt
+                        USV_Detail = USV_Detail # "USV Status ist unbekannt";
+                        USV_Modus  = USV_Modus  # "unbekannt";
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      USV_Text = USV_Status # "\r\n" # USV_Detail # "\r\n" # USV_Modus;
+
+      ! WriteLine(USV_Text);
+
+      dom.GetObject("sv_EM-TEXT").State(USV_Text);
+
+      system.Exec("/etc/config/addons/email/email 41", &stdout, &stderr);
+
+    }
+
+
+  }
+}
+
+==================================================================

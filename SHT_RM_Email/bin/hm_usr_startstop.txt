@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# /usr/local/etc/config/rc.d/usr_startstop.sh
+# Datei-Rechte auf 0755 setzen
+
+case "$1" in
+""|start)
+  # hier Code fuer Startup
+  # /etc/config/addons/email/email 47
+  ;;
+stop)
+  # hier Code fuer Shutdown
+  /etc/config/addons/email/email 50
+  ;;
+esac

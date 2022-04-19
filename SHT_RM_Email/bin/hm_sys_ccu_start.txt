@@ -1,0 +1,94 @@
+Addons:
+-------
+- E-Mail mit konfigurierten Vorlagen
+- CUxD-Exec
+
+HM-Systemvariablen:
+-------------------
+sv_CCU-Status	   CCU - Boot-Betrieb-Flag	  Logikwert
+					                                  wahr = Booten
+					                                  falsch = Betrieb
+sv_CCU-IP	       CCU - IP-Adresse	          Zeichenkette
+sv_CCU-HOST	     CCU - Hostname		          Zeichenkette
+
+==================================================================
+sys_CCU-Start
+Funktionen bei CCU Start durchführen
+==================================================================
+
+Bedingung
+ - Systemzustand  sv_CCU-Status  BEI  Booten  nur prüfen
+
+Aktivität
+ - Skript  ...  verzögert um  1  Sekunden
+ - Systemzustand  sv_CCU-Status  verzögert um  45  Sekunden Betrieb
+ - Skript  ...  verzögert um  46  Sekunden
+
+==================================================================
+
+!
+! CCU-Start - Initialisierungen
+!
+! Version 08.01.2022 - by wolwin - (Creative Commons)
+!
+
+! -----------------
+! --- CUxD exec ---
+! -----------------
+string s_cuxd = "CUxD.CUX2801001:16.";
+object o_cuxd_sets = dom.GetObject (s_cuxd # "CMD_SETS");
+object o_cuxd_qret = dom.GetObject (s_cuxd # "CMD_QUERY_RET");
+object o_cuxd_rets = dom.GetObject (s_cuxd # "CMD_RETS");
+
+! -------------------------------
+! --- Hostname und IP-Adresse ---
+! -------------------------------
+object o_ccu_h = dom.GetObject("sv_CCU-HOST");
+object o_ccu_i = dom.GetObject("sv_CCU-IP");
+if (o_ccu_h && o_ccu_i) {
+  o_ccu_h.State ("");
+  o_ccu_i.State ("");
+  if (o_cuxd_sets && o_cuxd_qret && o_cuxd_rets) {
+    ! http://www.christian-luetgens.de/homematic/cuxd/ipadresse/IP-Adresse.htm
+    string s_cmd_h = "echo $HOSTNAME";
+    string s_cmd_i = "ifconfig eth0 | awk '/inet addr/ && match ($0, /[0-9\.]+/) { printf substr ($0, RSTART, RLENGTH); }'";
+
+    o_cuxd_sets.State(s_cmd_h);
+    o_cuxd_qret.State(1);
+    o_ccu_h.State(o_cuxd_rets.State());
+
+    o_cuxd_sets.State(s_cmd_i);
+    o_cuxd_qret.State(1);
+    o_ccu_i.State(o_cuxd_rets.State());
+
+    o_cuxd_sets.State("");
+  }
+}
+
+! ----------------------------------------------
+! --- Email - Servervariablen mit Vorlage 48 ---
+! --- '###SYSTEM ### Start                   ---
+! --- 'RaspberryMatic wird gestartet.'       ---
+! ----------------------------------------------
+string stdout;
+string stderr;
+system.Exec("/etc/config/addons/email/email 48", &stdout, &stderr);
+
+==================================================================
+
+!
+! CCU-Start - Email - System-Online
+!
+! Version 08.01.2022 - by wolwin - (Creative Commons)
+!
+
+! ----------------------------------------------
+! --- Email - Servervariablen mit Vorlage 49 ---
+! --- '###SYSTEM ### Online                  ---
+! --- 'RaspberryMatic wurde gestartet.'      ---
+! ----------------------------------------------
+string stdout;
+string stderr;
+system.Exec("/etc/config/addons/email/email 49", &stdout, &stderr);
+
+==================================================================

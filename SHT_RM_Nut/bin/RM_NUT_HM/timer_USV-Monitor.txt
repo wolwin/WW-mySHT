@@ -1,0 +1,85 @@
+==================================================================
+timer_USV-Monitor
+Abruf der USV-Werte über Alarm, Zeitintervall oder System-Start
+==================================================================
+
+Bedingung: Wenn...
+ - Systemzustand  ups@192.168.10.114-Alarm  bei  ausgelöst  bei Aktualisierung auslösen
+ UND
+ - Systemzustand  sv_CCU-Status  bei  Betrieb  nur prüfen
+ODER
+ - Systemzustand  ups@192.168.10.114-Alarm  bei  nicht ausgelöst  bei Aktualisierung auslösen
+ UND
+ - Systemzustand  sv_CCU-Status  bei  Betrieb  nur prüfen
+ODER
+ - Zeitsteuerung  Periodisch Ganztägig beginnend am 21.11.2021  zu Zeitpunkten auslösen
+   - periodisch:  Zeitspanne - Ganztägig, Zeitintervall alle 5 Minuten
+ODER
+ - Systemzustand  sv_CCU-Status  bei  Booten  nur prüfen
+
+Aktivität: Dann...  Haken  Vor dem Ausführen alle laufenden Verzögerungen für diese Aktivitäten beenden (z.B. Retriggern).
+ - Skript  [timer_USV-Monitor]  sofort
+
+==================================================================
+
+ Anmerkung Quelltext:
+ Für das Monitoring von einem NUT-Client aus enthält 's_usv_ip'
+ die IP-Adresse des NUT-Servers – von einem NUT-Server aus kann
+ der ‚localhost‘ benutzt werden.
+
+==================================================================
+
+!
+! timer_USV-Monitor - Abfrage USV
+!
+! USV - alle Werte über einen UPSC-Aufruf abfragen
+!
+!       - Detailabfrage einzelner Werte über
+!         Callback-Funktion 'timer_USV-Monitor-Werte'
+!
+! Version 26.11.2021 - by wolwin - (Creative Commons)
+!
+
+! -----------------
+! --- CUxD exec ---
+! -----------------
+string s_cuxd = "CUxD.CUX2801001:1.";
+object o_cuxd_sets = dom.GetObject(s_cuxd # "CMD_SETS");
+object o_cuxd_qret = dom.GetObject(s_cuxd # "CMD_QUERY_RET");
+object o_cuxd_runs = dom.GetObject(s_cuxd # "CMD_RUNS");
+object o_cuxd_rets = dom.GetObject(s_cuxd # "CMD_RETS");
+
+! -------------------
+! --- USV-Abfrage ---
+! -------------------
+! string s_usv_ip  = "192.168.10.114";
+string s_usv_ip  = "127.0.0.1";
+string s_usv_nam = "ups";
+string s_usv_adr = s_usv_nam # "@" # s_usv_ip;
+string s_usv_req = "upsc " # s_usv_adr # " > /dev/stdout 2> /dev/null";
+string s_usv_png = "ping -c 1 " # s_usv_ip;
+
+if (o_cuxd_sets && o_cuxd_qret && o_cuxd_runs && o_cuxd_rets) {
+
+  ! --- PING auf NUT-USV-IP ---
+  o_cuxd_sets.State(s_usv_png);
+  o_cuxd_qret.State(1);
+
+  var o_tmp = o_cuxd_rets.State();
+  var s_tmp = o_tmp.ToString();
+
+  if ( s_tmp.Find("time") < 0 ) {
+    ! --- NUT-USV-IP nicht gefunden ---
+    s_usv_req = "echo > /dev/stdout > /dev/null";
+  }
+
+  o_cuxd_sets.State(s_usv_req);
+  o_cuxd_runs.State(1);
+
+  ! Debug
+  ! o_tmp = o_cuxd_rets.State();
+  ! WriteLine(">" # o_tmp # "<");
+
+}
+
+==================================================================

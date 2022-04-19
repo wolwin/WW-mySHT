@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# /usr/local/etc/config/rc.d/nutshutdown
+# user-rights: 0755 - root [0]
+
+case "$1" in
+""|start)
+  # RM Startup 
+  ;;
+stop)
+  # RM Shutdown 
+  # NUT-Original: /sbin/upsmon -K >/dev/null 2>&1 && /sbin/upsdrvctl shutdown
+  # Test for the UPS shutdown flag
+  if /usr/sbin/upsmon -K >/dev/null 2>&1; then
+    # Stop UPS driver instance
+    /usr/sbin/upsdrvctl stop
+    sleep 2
+    # Call UPS shutdown
+    /usr/sbin/upsdrvctl shutdown
+    # Send email 
+    /etc/config/addons/email/email 47
+  fi
+  ;;
+esac

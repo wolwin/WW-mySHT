@@ -1,0 +1,172 @@
+==================================================================
+timer_USV-Monitor-Werte
+Callback-Funktion zur Abspeicherung der USV-Werte in Servervariablen
+==================================================================
+
+Bedingung: Wenn...
+ - Geräteauswahl  CUX-Exec:1  bei  WORKING=FALSE  bei Aktualisierung auslösen
+ UND
+ - Systemzustand  sv_CCU-Status  bei  Betrieb  nur prüfen
+
+Aktivität: Dann...  Haken  Vor dem Ausführen alle laufenden Verzögerungen für diese Aktivitäten beenden (z.B. Retriggern).
+ - Skript  [timer_USV-Monitor-Werte]  sofort
+
+==================================================================
+
+Anmerkung:
+In 's_tmp_svd' wird festgelegt, welche USV-Werte aus der NUT 'upsc' Abfrage
+als HomeMatic Systemvariable abgespeichert werden sollen. Diese Systemvariablen
+müssen natürlich vorab angelegt werden.
+
+==================================================================
+
+var v_src = dom.GetObject("$src$");
+
+!
+! timer_USV-Monitor-Werte - Callback-Funktion der USV-Abfrage
+!
+! - ausgewählte USV-Werte in USV-Systemvariable schreiben
+!
+! Version 12.01.2022 - by wolwin - (Creative Commons)
+!
+
+! --- Servervariable für USV-Gesamtliste ----------------------
+! --- wenn nicht benötigt: die Servervariable nicht anlegen ---
+object o_usv_all = dom.GetObject("sv_USV-Monitor");
+string s_usv_all = "";
+
+! --- Pre-Name der USV-Servervariablen ---
+string s_tmp_svp = "sv_USV_";
+
+! --- Variablen-Name der CCU-Abfragezeit ---
+string s_tmp_cdt = "ccu.time";
+
+! --- USV-Detailnamen, die in gleich lautende Servervariablen ---
+! --- mit vorgestelltem 'sv_USV_' abgespeichert werden sollen ---
+string s_tmp_svd = s_tmp_cdt # ",battery.charge,battery.runtime,battery.voltage,device.model,input.voltage,output.voltage,ups.load,ups.status";
+
+! --- USV-Detailnamen, deren 'Sekunden'-Werte im 'HH:MM:SS'-Format ---
+! --- gewandelt und mit vorgestelltem 'sv_USV_' und nachgestelltem ---
+! --- '_s' abgespeichert werden sollen -------------------------------
+string s_tmp_svds = "battery.runtime";
+string s_tmp_svdsp = "_s";
+
+! -------------------------
+! --- CUxD exec WORKING ---
+! -------------------------
+string s_cuxd = "CUxD.CUX2801001:1.";
+if (v_src) {
+  s_cuxd = v_src.Name();
+  s_cuxd = s_cuxd.Substr(0, s_cuxd.Find("WORKING"));
+}
+object o_cuxd_rets = dom.GetObject(s_cuxd # "CMD_RETS");
+object o_cuxd_sets = dom.GetObject(s_cuxd # "CMD_SETS");
+
+object o_tmp_sv;
+string s_tmp_i;
+string s_tmp_ii;
+string s_tmp_iii;
+
+string s_tmp_dt = system.Date("%d.%m.%Y - %H:%M");
+
+! -------------------------
+! --- USV-Abfrage holen ---
+! -------------------------
+if (o_cuxd_sets && o_cuxd_rets) {
+  s_usv_all = o_cuxd_rets.State();
+  o_cuxd_sets.State("");
+}
+
+! s_usv_all = "";
+
+! --- USV-Systemvariablen füllen ---
+if (s_usv_all <> "") {
+  ! --- Abfrage war erfolgreich ---
+  s_usv_all = s_tmp_cdt # ": " # s_tmp_dt # "\r\n" # s_usv_all;
+  if (o_usv_all) {
+    ! --- evtl. Servervariable mit Abfrage-Zeitpunkt schreiben ---
+    o_usv_all.State(s_usv_all);
+    ! WriteLine(s_usv_all);
+  }
+
+  ! --- über alle Zeilen der USV-Rückgabe ---
+  foreach(s_tmp_i, s_usv_all.Split("\n")) {
+    ! WriteLine("- " # s_tmp_i);
+
+    ! --- Vergleiche mit allen SVD-Soll-Einträgen ---
+    foreach(s_tmp_ii, s_tmp_svd.Split(",")) {
+      if (s_tmp_i.Find(s_tmp_ii # ":") == 0) {
+        ! --- SVD-Soll-Eintrag gefunden ---
+        o_tmp_sv = dom.GetObject(s_tmp_svp # s_tmp_ii);
+        if (o_tmp_sv) {
+          ! --- es gibt die SVD-Servervariable ---
+          ! --- Wert des Eintrags extrahieren
+          ! WriteLine("-- " # s_tmp_svp # s_tmp_ii # " --- " # s_tmp_i);
+          s_tmp_iii = s_tmp_i.Substr((s_tmp_ii.Length() + 1)).Trim();
+          ! WriteLine(s_tmp_iii);
+          ! --- Wert des Eintrags in Servervariable schreiben ---
+          o_tmp_sv.State(s_tmp_iii);
+        }
+      }
+    }
+
+    ! --- Vergleiche mit allen SVDS-Soll-Einträgen ---
+    foreach(s_tmp_ii, s_tmp_svds.Split(",")) {
+      if (s_tmp_i.Find(s_tmp_ii # ":") == 0) {
+        ! --- SVDS-Soll-Eintrag gefunden ---
+        o_tmp_sv = dom.GetObject(s_tmp_svp # s_tmp_ii # s_tmp_svdsp);
+        if (o_tmp_sv) {
+          ! --- es gibt die SVDS-Servervariable ---
+          ! --- Wert des Eintrags extrahieren
+          ! WriteLine("-- " # s_tmp_svp # s_tmp_ii # " --- " # s_tmp_i);
+          s_tmp_iii = s_tmp_i.Substr((s_tmp_ii.Length() + 1)).Trim();
+          ! WriteLine(s_tmp_iii);
+          s_tmp_iii = s_tmp_iii.ToFloat();
+          s_tmp_iii = (s_tmp_iii.ToTime() - 3600).Format("%H:%M:%S");
+          o_tmp_sv.State(s_tmp_iii);
+        }
+      }
+    }
+
+  }
+
+} else {
+  ! --- Abfrage war nicht erfolgreich ---
+  if (o_usv_all) {
+    ! --- evtl. Servervariable nur mit Abfrage-Zeitpunkt beschreiben ---
+    o_usv_all.State(s_tmp_dt);
+  }
+
+  ! --- globaler Eintrag ---
+  s_tmp_iii = "0";
+
+  ! --- über alle SVD-Soll-Einträge ---
+  foreach(s_tmp_ii, s_tmp_svd.Split(",")) {
+    ! WriteLine("- " # s_tmp_ii);
+    o_tmp_sv = dom.GetObject(s_tmp_svp # s_tmp_ii);
+    if (o_tmp_sv) {
+      ! --- es gibt die SVD-Servervariable ---
+      if (s_tmp_ii <> "ccu") {
+        ! --- Wert 0 in Servervariable schreiben ---
+        o_tmp_sv.State(s_tmp_iii);
+      } else {
+        ! --- Datum in Servervariable schreiben ---
+        o_tmp_sv.State(s_tmp_dt);
+      }
+    }
+  }
+
+  ! --- über alle SVDS-Soll-Einträge ---
+  foreach(s_tmp_ii, s_tmp_svds.Split(",")) {
+    ! WriteLine("- " # s_tmp_ii);
+    o_tmp_sv = dom.GetObject(s_tmp_svp # s_tmp_ii # s_tmp_svdsp);
+    if (o_tmp_sv) {
+      ! --- es gibt die SVDS-Servervariable ---
+      ! --- Wert 0 in Servervariable schreiben ---
+      o_tmp_sv.State(s_tmp_iii);
+    }
+  }
+
+}
+
+==================================================================

@@ -1,0 +1,20 @@
+load tclrega.so
+
+array set values [rega_script {
+var em_to = dom.GetObject("sv_EM-TO").Value();
+var em_subjp = web.webGetValueFromList(dom.GetObject("sv_EM-SUBJ-PRE").ValueList(),dom.GetObject("sv_EM-SUBJ-PRE").Value());
+var em_subj = dom.GetObject("sv_EM-SUBJ").Value();
+var em_text = dom.GetObject("sv_EM-TEXT").Value();
+var my_ip = dom.GetObject("sv_CCU-IP").Value();
+var my_host = dom.GetObject("sv_CCU-HOST").Value();
+string my_zeit = system.Date("%d.%m.%Y - %H:%M:%S Uhr");
+} ]
+
+set EM_to $values(em_to)
+set EM_subjp $values(em_subjp)
+set EM_subj [encoding convertfrom utf-8 $values(em_subj)]
+set EM_text [encoding convertfrom utf-8 $values(em_text)]
+
+set MY_zeit $values(my_zeit)
+set MY_ip $values(my_ip)
+set MY_host $values(my_host)
