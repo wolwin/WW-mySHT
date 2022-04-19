@@ -14,7 +14,7 @@
 
 Gerade im Bereich des 'Power Managements' macht es Sinn, Überblick über den Verlauf eines Stromausfalls zu haben. Als Ansatz wurde für die 'RaspberryMatic' der Versand per Email gewählt. Mit Hilfe des ['HM-Email-Addon'](https://github.com/homematic-community/hm_email) und seiner Templates lassen sich strukturierte System- und Fehler-Meldungen per Email versenden. Eine ausführliche Installation- und Konfiguration-Anleitung findet sich hier:
 
-- ['RaspberryMatic' mit 'HM-Email-Addon' konfiguriert für den Versand von System-Meldungen](../SHT_RM_Email/Readme.md)
+- ['RaspberryMatic' mit 'HM-Email-Addon' konfiguriert für den Versand von System-Meldungen](../SHT_RM_Email/README.md)
 
 Mit Hilfe des TCL-Skripts 'Msg2Var.tcl' können die 'HomeMatic' Systemvariablen für den Email-Versand gefüllt werden. In diesem Zusammenspiel von 'Email-Addon' und 'NUT'-Skripten kann der Statusverlauf der 'RaspberryMatic' und der USV dokumentiert werden.
 
