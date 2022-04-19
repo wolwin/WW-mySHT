@@ -83,7 +83,7 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
       ```
 
 ##### upsmon.conf
-  Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeilen eingefügt, die dann bei entsprechenden Events das 'nut_notify.sh' Skript aufrufen:
+Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeilen eingefügt, die dann bei entsprechenden Events das 'nut_notify.sh' Skript aufrufen:
 
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
     ```
@@ -106,7 +106,7 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
   ```
 
 ##### nut_notify.sh
-  Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41'  durchgeführt.
+Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41'  durchgeführt.
 
   -	Anpassen der Datei */etc/config/nut/nut_notify.sh*
   ```
