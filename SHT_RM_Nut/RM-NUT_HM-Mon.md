@@ -35,19 +35,19 @@ Als Schnittstelle zum 'NUT-Server' wird der 'upsc \<UPSNAME\>@\<IP-ADRESS\>' Bef
 
     ![WW-mySHT - HomeMatic](./img/nut_hm_sysvar_alarm.jpg)
 
-- Das 'HomeMatic' Programm ‚timer_USV-Monitor‘ anlegen
+- Das 'HomeMatic' Programm 'timer_USV-Monitor' anlegen
 
   ![WW-mySHT - HomeMatic](./img/nut_hm_prog_timer_usv_monitor.jpg)
 
-  Quelltext: [timer_USV_Monitor ...](./bin/RM_NUT_HM/timer_USV_Monitor.txt)
+  Quelltext: [timer_USV_Monitor ...](./bin/RM_NUT_HM/timer_USV-Monitor.txt)
 
-- Das 'HomeMatic' Programm ‚timer_USV-Monitor-Werte‘ anlegen
+- Das 'HomeMatic' Programm 'timer_USV-Monitor-Werte' anlegen
 
   ![WW-mySHT - HomeMatic](./img/nut_hm_prog_timer_usv_monitor_werte.jpg)
 
-  Quelltext: [timer_USV_Monitor-Werte ...](./bin/RM_NUT_HM/timer_USV_Monitor-Werte.txt)
+  Quelltext: [timer_USV_Monitor-Werte ...](./bin/RM_NUT_HM/timer_USV-Monitor-Werte.txt)
 
-- Das 'HomeMatic' Programm ‚sys_USV-State-Email‘ anlegen
+- Das 'HomeMatic' Programm 'sys_USV-State-Email' anlegen
 
   ![WW-mySHT - HomeMatic](./img/nut_hm_prog_sys_usv_state_email.jpg)
 
