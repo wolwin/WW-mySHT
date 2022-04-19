@@ -110,7 +110,7 @@ Damit ist die Grundinstallation des 'HM-Email-Addon' erfolgreich abgeschlossen w
 
 Um die 'Start'- und 'Herunterfahren'-Aktionen der 'RaspberryMatic' per Email-Benachrichtigung zu erhalten, sind folgende Skripte notwendig:
 
-- 'Start'-Skript der CCU - Quelltext: [sys_CCU-Start](../bin/hm_sys_ccu_start.txt)
+- 'Start'-Skript der CCU - Quelltext: [sys_CCU-Start](./bin/hm_sys_ccu_start.txt)
 
   ![WW-mySHT - HM-Email-Addon](./img/hm_sys_ccu_start_1.jpg)
 
@@ -118,7 +118,7 @@ Um die 'Start'- und 'Herunterfahren'-Aktionen der 'RaspberryMatic' per Email-Ben
 
   ![WW-mySHT - HM-Email-Addon](./img/hm_sys_ccu_start_3.jpg)
 
-- 'Herunterfahren'-Prozess der 'RaspberryMatic' - Quelltext: [usr_startstop](../bin/hm_usr_startstop.txt)
+- 'Herunterfahren'-Prozess der 'RaspberryMatic' - Quelltext: [usr_startstop](./bin/hm_usr_startstop.txt)
 
     -	Einfügen der Datei */usr/local/etc/config/rc.d/usr_startstop* mit 'WinSCP'
       - Datei 'usr_startstop' anlegen
