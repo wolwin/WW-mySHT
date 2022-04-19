@@ -2,13 +2,13 @@
 
 [Zurück zur Übersicht ...](../README.md)
 
-- Weiter zu: [I.) 'RaspberryMatic' und 'Network UPS Tools' ...](../README.md)
+- Weiter zu: [I.) 'RaspberryMatic' und 'Network UPS Tools' ...](./README.md)
 
-- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](../RM-NUT_Client.md)
+- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](./RM-NUT_Client.md)
 
-- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](../RM-NUT_Xtend.md)
+- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](./RM-NUT_Xtend.md)
 
-- Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](../RM-NUT_HM-Mon.md)
+- Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](./RM-NUT_HM-Mon.md)
 
 ### 'RaspberryMatic' als 'NUT-Server' konfigurieren
 
@@ -348,9 +348,9 @@ Esac
 
 ### Setup 'RaspberryMatic' als 'NUT-Server'
 
-  - Weiter zu: [Vollständige Konfiguration 'RaspberryMatic' als 'NUT-Server' ...](../bin/RM_NUT_Server)
+  - Weiter zu: [Vollständige Konfiguration 'RaspberryMatic' als 'NUT-Server' ...](./bin/RM_NUT_Server)
 
-  - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](../bin/RM_NUT_3.53.30)
+  - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
 
 ### Historie
 - 2022-04-18 - Erstveröffentlichung

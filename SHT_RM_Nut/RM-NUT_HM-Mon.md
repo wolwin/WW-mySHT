@@ -2,13 +2,13 @@
 
 [Zurück zur Übersicht ...](../README.md)
 
-- Weiter zu: [I.) 'RaspberryMatic' und 'Network UPS Tools' ...](../README.md)
+- Weiter zu: [I.) 'RaspberryMatic' und 'Network UPS Tools' ...](./README.md)
 
-- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](../RM-NUT_Client.md)
+- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](./RM-NUT_Client.md)
 
-- Weiter zu: [III.) 'RaspberryMatic' als 'NUT-Server' konfigurieren ...](../RM-NUT_Server.md)
+- Weiter zu: [III.) 'RaspberryMatic' als 'NUT-Server' konfigurieren ...](./RM-NUT_Server.md)
 
-- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](../RM-NUT_Xtend.md)
+- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](./RM-NUT_Xtend.md)
 
 ### 'RaspberryMatic' und 'NUT' Monitoring (Client und Server)
 
@@ -39,19 +39,19 @@ Als Schnittstelle zum 'NUT-Server' wird der 'upsc \<UPSNAME\>@\<IP-ADRESS\>' Bef
 
   ![WW-mySHT - HomeMatic](./img/nut_hm_prog_timer_usv_monitor.jpg)
 
-  Quelltext: [timer_USV_Monitor ...](../bin/RM_NUT_HM/timer_USV_Monitor.txt)
+  Quelltext: [timer_USV_Monitor ...](./bin/RM_NUT_HM/timer_USV_Monitor.txt)
 
 - Das 'HomeMatic' Programm ‚timer_USV-Monitor-Werte‘ anlegen
 
   ![WW-mySHT - HomeMatic](./img/nut_hm_prog_timer_usv_monitor_werte.jpg)
 
-  Quelltext: [timer_USV_Monitor-Werte ...](../bin/RM_NUT_HM/timer_USV_Monitor-Werte.txt)
+  Quelltext: [timer_USV_Monitor-Werte ...](./bin/RM_NUT_HM/timer_USV_Monitor-Werte.txt)
 
 - Das 'HomeMatic' Programm ‚sys_USV-State-Email‘ anlegen
 
   ![WW-mySHT - HomeMatic](./img/nut_hm_prog_sys_usv_state_email.jpg)
 
-  Quelltext: [sys_USV-State-Email ...](../bin/RM_NUT_HM/sys_USV-State-Email.txt)
+  Quelltext: [sys_USV-State-Email ...](./bin/RM_NUT_HM/sys_USV-State-Email.txt)
 
 - 'HomeMatic' Systemvariable 'sv_USV-Monitor' nach einer 'NUT'-Abfrage
 

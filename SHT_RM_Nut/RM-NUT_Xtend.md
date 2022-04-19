@@ -2,15 +2,15 @@
 
 [Zurück zur Übersicht ...](../README.md)
 
-- Weiter zu: [I.) 'RaspberryMatic' und 'Network UPS Tools' ...](../README.md)
+- Weiter zu: [I.) 'RaspberryMatic' und 'Network UPS Tools' ...](./README.md)
 
-- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](../RM-NUT_Client.md)
+- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](./RM-NUT_Client.md)
 
-- Weiter zu: [III.) 'RaspberryMatic' als 'NUT-Server' konfigurieren ...](../RM-NUT_Server.md)
+- Weiter zu: [III.) 'RaspberryMatic' als 'NUT-Server' konfigurieren ...](./RM-NUT_Server.md)
 
-- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](../RM-NUT_Xtend.md)
+- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](./RM-NUT_Xtend.md)
 
-- Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](../RM-NUT_HM-Mon.md)
+- Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](./RM-NUT_HM-Mon.md)
 
 ### 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server)
 

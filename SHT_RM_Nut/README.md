@@ -2,13 +2,13 @@
 
 [Zurück zur Übersicht ...](../README.md)
 
-- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](../RM-NUT_Client.md)
+- Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](./RM-NUT_Client.md)
 
-- Weiter zu: [III.) 'RaspberryMatic' als 'NUT-Server' konfigurieren ...](../RM-NUT_Server.md)
+- Weiter zu: [III.) 'RaspberryMatic' als 'NUT-Server' konfigurieren ...](./RM-NUT_Server.md)
 
-- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](../RM-NUT_Xtend.md)
+- Weiter zu: [IV.) 'RaspberryMatic' Erweiterungen der 'NUT' Konfiguration (Client und Server) ...](./RM-NUT_Xtend.md)
 
-- Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](../RM-NUT_HM-Mon.md)
+- Weiter zu: [V.) 'RaspberryMatic' und 'NUT' Monitoring (Client und Server) ...](./RM-NUT_HM-Mon.md)
 
 ### Funktion
 Ausgangspunkt ist die 'RaspberryMatic' in der Release-Version 3.53.30 vom 24.01.2020 auf einem RPI3-System, auf dem eine 'NUT-Client' bzw. eine 'NUT-Server' Installation mit einer 'APC Back-UPS CS 650' vorgenommen wird. Jeweils aktuelle 'RaspberryMatic' Versionen für unterschiedliche Hardwareplattformen finden sich hier:
