@@ -165,5 +165,7 @@ Snapshot des 'NUT' Email-Template ...
   set MY_host $values(my_host)
   ```  
 
+- Details finden sich hier: ['RaspberryMatic' mit 'HM-Email-Addon' konfiguriert für den Versand von System-Meldungen](../SHT_RM_Email/README.md)
+
 ### Historie
 - 2022-04-18 - Erstveröffentlichung
