@@ -34,49 +34,49 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
   -	Anpassen der Datei */etc/config/nut/ups.conf*
 
     -	Nach der letzten Kommentarzeile einfügen:
-      ```
-      # Set maxretry to 3 by default, this should mitigate race with slow devices:
-      maxretry = 3
-      ```
-      ```
-      [ups]
-          desc = "APC Back-UPS CS 650"
-          # driver.name
-          driver = "usbhid-ups"
-          # driver.parameter.port
-          port = "auto"
-          # driver.parameter.pollintervall
-          pollinterval = 15
-      ```
-      ```
-          # driver.parameter.lowbatt
-          # sets also the default value for battery.charge.low
-          lowbatt = 33
-      ```
-      ```
-          # driver.parameter.offdelay
-          # sets also ups.delay.shutdown
-          # Set the timer before the UPS is turned off after the kill power command is sent (via the -k switch)
-          offdelay = 120
-      ```
-      ```
-          # driver.parameter.ondelay
-          # sets also ups.delay.start
-          # Set the timer for the UPS to switch on in case the power returns after the kill power command had been
-          # sent, but before the actual switch off. This ensures the machines connected to the UPS are, in all cases,
-          # rebooted after a power failure. Usually this must be greater than offdelay
-          ondelay = 130
-      ```
-      ```
-          # Optional. When you specify this, the driver ignores a low battery condition flag that is
-          # reported by the UPS (some devices will switch off almost immediately after setting this
-          # flag, or will report this as soon as the mains fails). Instead it will use either of the
-          # following conditions to determine when the battery is low
-          ignorelb
-          override.battery.charge.low = 33
-          override.battery.charge.warning = 50
-          override.battery.runtime.low = 300
-      ```
+          ```
+          # Set maxretry to 3 by default, this should mitigate race with slow devices:
+          maxretry = 3
+          ```
+          ```
+          [ups]
+              desc = "APC Back-UPS CS 650"
+              # driver.name
+              driver = "usbhid-ups"
+              # driver.parameter.port
+              port = "auto"
+              # driver.parameter.pollintervall
+              pollinterval = 15
+          ```
+          ```
+              # driver.parameter.lowbatt
+              # sets also the default value for battery.charge.low
+              lowbatt = 33
+          ```
+          ```
+              # driver.parameter.offdelay
+              # sets also ups.delay.shutdown
+              # Set the timer before the UPS is turned off after the kill power command is sent (via the -k switch)
+              offdelay = 120
+          ```
+          ```
+              # driver.parameter.ondelay
+              # sets also ups.delay.start
+              # Set the timer for the UPS to switch on in case the power returns after the kill power command had been
+              # sent, but before the actual switch off. This ensures the machines connected to the UPS are, in all cases,
+              # rebooted after a power failure. Usually this must be greater than offdelay
+              ondelay = 130
+          ```
+          ```
+              # Optional. When you specify this, the driver ignores a low battery condition flag that is
+              # reported by the UPS (some devices will switch off almost immediately after setting this
+              # flag, or will report this as soon as the mains fails). Instead it will use either of the
+              # following conditions to determine when the battery is low
+              ignorelb
+              override.battery.charge.low = 33
+              override.battery.charge.warning = 50
+              override.battery.runtime.low = 300
+          ```
 
   - Erläuterung:
     - Die APC USV mit dem NUT-Device Namen 'ups' wird über den USB-Port 'automatisch' mit dem Treiber 'usbhid‑ups' eingebunden. Die untere Schwelle der Batterie-Kapazität wird mit 'lowbatt' auf 33% gesetzt, damit die USV nach Wiederkehren der Stromversorgung direkt starten kann, ohne vorher lange die USV-Batterie erst laden zu müssen.
