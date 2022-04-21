@@ -73,24 +73,24 @@ Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adress
 
 Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt legen die Parameter fest, die den Berechtigungen dieses Benutzers zugeordnet sind. Der Abschnitt beginnt mit dem Namen des Benutzers in Klammern und wird bis zum nächsten Benutzernamen in Klammern oder EOF fortgesetzt. Diese Benutzer sind unabhängig von den Benutzer in '/etc/passwd'.
 
--	Anpassen der Datei */etc/config/nut/upsd.users*
-  -	Nach der letzten Kommentarzeile einfügen:
-      ```
-      [<USERNAME-S>]
-      password = <PASSWORD-S>
-      upsmon slave
-      ```    
-      |||
-      | --- | --- |
-      | \<USERNAME-S\> |	'NUT-Client' Nutzername (z.B.: monuser) |
-      | \<PASSWORD-S\> |	Passwort (z.B.: pass) |
+  -	Anpassen der Datei */etc/config/nut/upsd.users*
+    -	Nach der letzten Kommentarzeile einfügen:
+          ```
+          [<USERNAME-S>]
+          password = <PASSWORD-S>
+          upsmon slave
+          ```    
+          |||
+          | --- | --- |
+          | \<USERNAME-S\> |	'NUT-Client' Nutzername (z.B.: monuser) |
+          | \<PASSWORD-S\> |	Passwort (z.B.: pass) |
 
-  - Beispiel:
-    ```
-    [monuser]
-    password = pass
-    upsmon slave
-    ```
+      - Beispiel:
+        ```
+        [monuser]
+        password = pass
+        upsmon slave
+        ```
 
 ##### upssched.conf
 Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'upssched.conf'](./RM-NUT_Server.md#upsschedconf)
