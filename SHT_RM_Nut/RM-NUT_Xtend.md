@@ -86,6 +86,7 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
 *Erweiterung*: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeilen eingefügt, die dann bei entsprechenden Events das 'nut_notify.sh' Skript aufrufen:
 
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
+
        ```
        ...
        NOTIFYCMD /etc/config/nut/nut_notify.sh
@@ -110,31 +111,31 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
 
   -	Anpassen der Datei */etc/config/nut/nut_notify.sh*
 
-    ```
-    #!/bin/sh
-    #
-    # This script will be called as soon as NUT identifies a
-    # connected UPS system to require some attention.
-    #
-    # You can adapt this to your needs and use ${UPSNAME} and
-    # ${NOTIFYTYPE} which will be set by NUT.
-    #
+       ```
+       #!/bin/sh
+       #
+       # This script will be called as soon as NUT identifies a
+       # connected UPS system to require some attention.
+       #
+       # You can adapt this to your needs and use ${UPSNAME} and
+       # ${NOTIFYTYPE} which will be set by NUT.
+       #
 
-    myMsg=$*
-    myMsg="NUT-Meldung von [`hostname`]: ${NOTIFYTYPE}\n\n${myMsg}"
+       myMsg=$*
+       myMsg="NUT-Meldung von [`hostname`]: ${NOTIFYTYPE}\n\n${myMsg}"
 
-    # trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
-    /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
+       # trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
+       /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
 
-    # trigger an email alarm message via template
-    SCRIPTPATH=$(cd `dirname $0` && pwd)
-    "$SCRIPTPATH/Msg2Var.tcl" "16" "sv_EM-SUBJ-PRE"
-    "$SCRIPTPATH/Msg2Var.tcl" "${NOTIFYTYPE}" "sv_EM-SUBJ"
-    "$SCRIPTPATH/Msg2Var.tcl" "${myMsg}" "sv_EM-TEXT"
-    "/etc/config/addons/email/email" "41"
-    ```  
+       # trigger an email alarm message via template
+       SCRIPTPATH=$(cd `dirname $0` && pwd)
+       "$SCRIPTPATH/Msg2Var.tcl" "16" "sv_EM-SUBJ-PRE"
+       "$SCRIPTPATH/Msg2Var.tcl" "${NOTIFYTYPE}" "sv_EM-SUBJ"
+       "$SCRIPTPATH/Msg2Var.tcl" "${myMsg}" "sv_EM-TEXT"
+       "/etc/config/addons/email/email" "41"
+       ```  
 
-#### Email-Addon - 'NUT'-Template
+#### 'HM-Email-Addon' - 'NUT'-Template
 
 Snapshot des 'NUT' Email-Template ...
 
