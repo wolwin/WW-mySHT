@@ -18,7 +18,7 @@ Gerade im Bereich des 'Power Managements' macht es Sinn, Überblick über den Ve
 
 Mit Hilfe des TCL-Skripts 'Msg2Var.tcl' können die 'HomeMatic' Systemvariablen für den Email-Versand gefüllt werden. In diesem Zusammenspiel von 'Email-Addon' und 'NUT'-Skripten kann der Statusverlauf der 'RaspberryMatic' und der USV dokumentiert werden.
 
-##### Msg2Var.tcl
+#### Msg2Var.tcl
 Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvariablen beschreiben.
 
   -	Einfügen der Datei */usr/local/etc/config/nut/Msg2Var.tcl*
@@ -82,8 +82,8 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
       exit $res
       ```
 
-##### upsmon.conf
-Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeilen eingefügt, die dann bei entsprechenden Events das 'nut_notify.sh' Skript aufrufen:
+#### upsmon.conf
+*Erweiterung*: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeilen eingefügt, die dann bei entsprechenden Events das 'nut_notify.sh' Skript aufrufen:
 
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
     ```
@@ -105,8 +105,8 @@ Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeile
     ...
     ```
 
-##### nut_notify.sh
-Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41'  durchgeführt.
+#### nut_notify.sh
+*Erweiterung*: für den 'NUT-Client' und den 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41'  durchgeführt.
 
   -	Anpassen der Datei */etc/config/nut/nut_notify.sh*
 
@@ -134,7 +134,7 @@ Erweiterung: für den 'NUT-Client' und den 'NUT-Server' werden die 'HomeMatic' E
     "/etc/config/addons/email/email" "41"
     ```  
 
-##### Email-Addon - 'NUT'-Template
+#### Email-Addon - 'NUT'-Template
 
 Snapshot des 'NUT' Email-Template ...
 
