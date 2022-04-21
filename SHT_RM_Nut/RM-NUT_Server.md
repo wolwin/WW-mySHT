@@ -175,13 +175,13 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
 ##### upssched.conf
 Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfsprogramm für 'upsmon'. Hier können eigene Skripte definiert werden, die bei bestimmten Ereignissen ausgeführt werden.
 
-  -	Anpassen der Datei /etc/config/nut/upssched.conf
+  -	Anpassen der Datei */etc/config/nut/upssched.conf*
     - 'CMDSCRIPT' Eintrag ändern in:
           ```
           CMDSCRIPT /usr/bin/nut_upssched.sh
           ```
 
-    - '#' Kommentarzeichen vor den 'PIPEFN' und 'LOCKFN' entfernen und Pfadangaben ändern in:
+    - '\#' Kommentarzeichen vor den 'PIPEFN' und 'LOCKFN' entfernen und Pfadangaben ändern in:
           ```
           PIPEFN /var/state/ups/upssched.pipe
           LOCKFN /var/state/ups/upssched.lock
@@ -211,77 +211,77 @@ Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email
     - Datei-Rechte auf '0x0755' – 'root[0]' setzen
 
       ```
-#!/bin/sh
+      #!/bin/sh
 
-myUpsName="ups@localhost"
-myMsg="NUT-Meldung von [`hostname`]: $1\n"
+      myUpsName="ups@localhost"
+      myMsg="NUT-Meldung von [`hostname`]: $1\n"
 
-SCRIPTPATH=$(cd `dirname $0` && pwd)
-"$SCRIPTPATH/Msg2Var.tcl" "16" "sv_EM-SUBJ-PRE"
-"$SCRIPTPATH/Msg2Var.tcl" "$1" "sv_EM-SUBJ"
+      SCRIPTPATH=$(cd `dirname $0` && pwd)
+      "$SCRIPTPATH/Msg2Var.tcl" "16" "sv_EM-SUBJ-PRE"
+      "$SCRIPTPATH/Msg2Var.tcl" "$1" "sv_EM-SUBJ"
 
-case $1 in
-	onbatt)
-		STAT=`upsc $myUpsName ups.status`
-		BATT=`upsc $myUpsName battery.charge`
-		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
-                myMsg="$myMsg\nDas System laeuft seit mehr als 5 Minuten im Batteriebetrieb.\n"
-                myMsg="$myMsg\nUSV-Status : $STAT"
-                myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
-                myMsg="$myMsg\nUSV-Modus  : Batteriebetrieb\n"
-                ;;
+      case $1 in
+	      onbatt)
+      		STAT=`upsc $myUpsName ups.status`
+      		BATT=`upsc $myUpsName battery.charge`
+      		RUNTIME=`upsc $myUpsName battery.runtime`
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      myMsg="$myMsg\nDas System laeuft seit mehr als 5 Minuten im Batteriebetrieb.\n"
+                      myMsg="$myMsg\nUSV-Status : $STAT"
+                      myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
+                      myMsg="$myMsg\nUSV-Modus  : Batteriebetrieb\n"
+                      ;;
 
-        online)
-		STAT=`upsc $myUpsName ups.status`
-		BATT=`upsc $myUpsName battery.charge`
-		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
-                myMsg="$myMsg\nDas System laeuft jetzt wieder im Netzbetrieb.\n"
-                myMsg="$myMsg\nUSV-Status : $STAT"
-                myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
-                myMsg="$myMsg\nUSV-Modus  : Netzbetrieb\n"
-                ;;
+              online)
+      		STAT=`upsc $myUpsName ups.status`
+      		BATT=`upsc $myUpsName battery.charge`
+      		RUNTIME=`upsc $myUpsName battery.runtime`
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      myMsg="$myMsg\nDas System laeuft jetzt wieder im Netzbetrieb.\n"
+                      myMsg="$myMsg\nUSV-Status : $STAT"
+                      myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
+                      myMsg="$myMsg\nUSV-Modus  : Netzbetrieb\n"
+                      ;;
 
-	commbad)
-                myMsg="$myMsg\nDas System hat die Verbindung mit der USV verloren!\n"
-                ;;
+	      commbad)
+                      myMsg="$myMsg\nDas System hat die Verbindung mit der USV verloren!\n"
+                      ;;
 
-	commok)
-		STAT=`upsc $myUpsName ups.status`
-		BATT=`upsc $myUpsName battery.charge`
-		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
-                myMsg="$myMsg\nDas System hat die Verbindung mit der USV wieder hergestellt.\n"
-                myMsg="$myMsg\nUSV-Status : $STAT"
-                myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
-                myMsg="$myMsg\nUSV-Modus  : Netzbetrieb\n"
-                ;;
+      	commok)
+      		STAT=`upsc $myUpsName ups.status`
+      		BATT=`upsc $myUpsName battery.charge`
+      		RUNTIME=`upsc $myUpsName battery.runtime`
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      myMsg="$myMsg\nDas System hat die Verbindung mit der USV wieder hergestellt.\n"
+                      myMsg="$myMsg\nUSV-Status : $STAT"
+                      myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
+                      myMsg="$myMsg\nUSV-Modus  : Netzbetrieb\n"
+                      ;;
 
-	powerdown)
-		STAT=`upsc $myUpsName ups.status`
-		BATT=`upsc $myUpsName battery.charge`
-		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
-                myMsg="$myMsg\n!!! Das System faehrt wegen eines Stromausfalls herunter!!!\n"
-                myMsg="$myMsg\nUSV-Status : $STAT"
-                myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
-                myMsg="$myMsg\nUSV-Modus  : Ausschalten\n"
-                ;;
+      	powerdown)
+      		STAT=`upsc $myUpsName ups.status`
+      		BATT=`upsc $myUpsName battery.charge`
+      		RUNTIME=`upsc $myUpsName battery.runtime`
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      myMsg="$myMsg\n!!! Das System faehrt wegen eines Stromausfalls herunter!!!\n"
+                      myMsg="$myMsg\nUSV-Status : $STAT"
+                      myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
+                      myMsg="$myMsg\nUSV-Modus  : Ausschalten\n"
+                      ;;
 
-	*)
-                # echo "wrong parameter"
-                myMsg="$myMsg\nDas System meldet einen unbekannten Parameter.\n"
-                ;;
+	      *)
+                      # echo "wrong parameter"
+                      myMsg="$myMsg\nDas System meldet einen unbekannten Parameter.\n"
+                      ;;
 
-esac
+      esac
 
-# echo "$myMsg"
+      # echo "$myMsg"
 
-"$SCRIPTPATH/Msg2Var.tcl" "${myMsg}" "sv_EM-TEXT"
-"/etc/config/addons/email/email" "41"
+      "$SCRIPTPATH/Msg2Var.tcl" "${myMsg}" "sv_EM-TEXT"
+      "/etc/config/addons/email/email" "41"
 
-exit 0
+      exit 0
       ```
 
 ##### nutshutdown
