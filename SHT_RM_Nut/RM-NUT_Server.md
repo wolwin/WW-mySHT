@@ -30,10 +30,10 @@ Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt 
 Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 'NUT' mit, mit welcher Art von USV-Gerät es arbeiten soll. Einige Einstellungen zur Steuerung der Kommunikation mit dem USV-Gerät können konfiguriert werden – außerdem können einige der USV-Geräteparameter überschrieben werden. Hier wird der 'NUT-Server' für die angeschlossene USV konfiguriert:
 -	Anpassen der Datei */etc/config/nut/ups.conf*
   -	Nach der letzten Kommentarzeile einfügen:
-```
-# Set maxretry to 3 by default, this should mitigate race with slow devices:
-maxretry = 3
-```
+    ```
+    # Set maxretry to 3 by default, this should mitigate race with slow devices:
+    maxretry = 3
+    ```
 ```
 [ups]
     desc = "APC Back-UPS CS 650"
