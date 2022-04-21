@@ -94,7 +94,10 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
           ```
           |||
           | --- | --- |
-          | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+          | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
+          | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+          | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: upsmaster) |
+          | \<PASSWORD\> | Passwort (z.B.: geheim) |
 
 
 
