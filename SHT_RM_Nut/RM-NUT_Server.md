@@ -84,7 +84,6 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
     - Mit dem 'ondelay' Eintrag wird die Zeit (in Sekunden) angegeben, die von der USV nach dem Wiederkehren des Stroms gewartet wird, bis die angeschlossenen Geräte wieder mit Strom versorgt werden. Der Wert von 'ondelay' muß größer als der Wert von 'offdelay' sein.
     - Optional kann mit 'ignorelb' der USV-Treiber das Flag für niedrigen Batteriezustand, welches von der USV gemeldet wird, ignorieren - einige USV-Geräte schalten sich fast sofort nach dem Setzen dieses Flags aus oder melden dies, sobald das Stromnetz ausfällt. Stattdessen werden die folgenden 'override' Bedingungen verwendet, um festzustellen, wann die Batterie schwach ist.
 
-
 #### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
 
@@ -107,7 +106,6 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
 
   - *Anmerkung*: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
-
 ##### nut_notify.sh
 In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
 
@@ -115,7 +113,6 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 # trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
 /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
 ```
-
 
 ##### upsd.conf
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
@@ -183,11 +180,13 @@ Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfs
           ```
           CMDSCRIPT /usr/bin/nut_upssched.sh
           ```
+
     - '#' Kommentarzeichen vor den 'PIPEFN' und 'LOCKFN' entfernen und Pfadangaben ändern in:
           ```
           PIPEFN /var/state/ups/upssched.pipe
           LOCKFN /var/state/ups/upssched.lock
           ```
+
     -	Nach der letzten Kommentarzeile die unten aufgeführten 'AT' Befehlszeilen einfügen einfügen:
           ```
           AT ONBATT * START-TIMER onbatt 30
@@ -199,19 +198,19 @@ Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfs
           AT SHUTDOWN * EXECUTE powerdown
           ```
 
-      - *Erläuterung*:
-        - 'CMDSCRIPT' ist der Pfad zu dem Skript, das ausgeführt werden soll, wenn USV-Trigger gesetzt wurden, die dann die Eventnachrichten an dieses Script weitergeben. Als Beispiel ist dazu die Datei 'nut_schedule.sh' beigefügt (siehe unten), die Email-Nachrichten verschickt. 'PIPEFN' und 'LOCKFN' werden genutzt, um mit den Prozessen (Start- und Stop-Timer) zu agieren. Sie werden automatisch erzeugt und gelöscht - die Ordner müssen für den Prozess beschreibbar sein.
-        - Es werden Timer für 'onbatt'. und 'commbad' benutzt, um innerhalb von jeweils 30 Sekunden zu entscheiden, ob wirklich ein entsprechender Event vorliegt.
+    - *Erläuterung*:
+      - 'CMDSCRIPT' ist der Pfad zu dem Skript, das ausgeführt werden soll, wenn USV-Trigger gesetzt wurden, die dann die Eventnachrichten an dieses Script weitergeben. Als Beispiel ist dazu die Datei 'nut_schedule.sh' beigefügt (siehe unten), die Email-Nachrichten verschickt. 'PIPEFN' und 'LOCKFN' werden genutzt, um mit den Prozessen (Start- und Stop-Timer) zu agieren. Sie werden automatisch erzeugt und gelöscht - die Ordner müssen für den Prozess beschreibbar sein.
+      - Es werden Timer für 'onbatt'. und 'commbad' benutzt, um innerhalb von jeweils 30 Sekunden zu entscheiden, ob wirklich ein entsprechender Event vorliegt.
 
 
 ##### nut_schedule.sh
 Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41' durchgeführt.
 
-  -	Optional, wenn in 'upssched.conf' definiert: Anlegen der Datei /etc/config/nut/nut_schedule.sh
+  -	Optional, wenn in 'upssched.conf' definiert: Anlegen der Datei */etc/config/nut/nut_schedule.sh*
     -	Datei 'nut_schedule.sh' mit folgendem Inhalt anlegen:
     - Datei-Rechte auf '0x0755' – 'root[0]' setzen
 
-```
+      ```
 #!/bin/sh
 
 myUpsName="ups@localhost"
@@ -283,43 +282,43 @@ esac
 "/etc/config/addons/email/email" "41"
 
 exit 0
-```
+      ```
 
 ##### nutshutdown
-  Die Datei 'nutshutdown' wird zum Ende des 'NUT' Herunterfahren-Prozesses ausgeführt, um die USV gezielt als letztes Gerät auszuschalten. Regulär wird diese Datei automatisch vom 'NUT' Installationspaket in '/lib/systemd/system-shutdown' angelegt und ist damit im Shutdown Prozess des Systems integriert.
+Die Datei 'nutshutdown' wird zum Ende des 'NUT' Herunterfahren-Prozesses ausgeführt, um die USV gezielt als letztes Gerät auszuschalten. Regulär wird diese Datei automatisch vom 'NUT' Installationspaket in '/lib/systemd/system-shutdown' angelegt und ist damit im Shutdown Prozess des Systems integriert.
 
-  Auf der RaspberryMatic gibt es keine 'systemd' Funktionalität und damit ist per Default keine 'nutshutdown' Funktion vorhanden. Diese Funktion kann jedoch nachgebildet werden, indem man so vorgeht:
+Auf der RaspberryMatic gibt es keine 'systemd' Funktionalität und damit ist per Default keine 'nutshutdown' Funktion vorhanden. Diese Funktion kann jedoch nachgebildet werden, indem man so vorgeht:
 
   -	Einfügen der Datei /usr/local/etc/config/rc.d/nutshutdown
     - Datei 'nutshutdown' mit folgendem Inhalt anlegen:
     - Datei-Rechte auf '0x0755' – 'root[0]' setzen
 
-```
-#!/bin/sh
+      ```
+      #!/bin/sh
 
-# /usr/local/etc/config/rc.d/nutshutdown
-# user-rights: 0755 - root [0]
+      # /usr/local/etc/config/rc.d/nutshutdown
+      # user-rights: 0755 - root [0]
 
-case "$1" in
-""|start)
-  # RM Startup
-  ;;
-stop)
-  # RM Shutdown
-  # NUT-Original: /sbin/upsmon -K >/dev/null 2>&1 && /sbin/upsdrvctl shutdown
-  # Test for the UPS shutdown flag
-  if /usr/sbin/upsmon -K >/dev/null 2>&1; then
-    # Stop UPS driver instance
-    /usr/sbin/upsdrvctl stop
-    sleep 2
-    # Call UPS shutdown
-    /usr/sbin/upsdrvctl shutdown
-    # Send email
-    /etc/config/addons/email/email 47
-  fi
-  ;;
-Esac
-```
+      case "$1" in
+      ""|start)
+        # RM Startup
+        ;;
+      stop)
+        # RM Shutdown
+        # NUT-Original: /sbin/upsmon -K >/dev/null 2>&1 && /sbin/upsdrvctl shutdown
+        # Test for the UPS shutdown flag
+        if /usr/sbin/upsmon -K >/dev/null 2>&1; then
+          # Stop UPS driver instance
+          /usr/sbin/upsdrvctl stop
+          sleep 2
+          # Call UPS shutdown
+          /usr/sbin/upsdrvctl shutdown
+          # Send email
+          /etc/config/addons/email/email 47
+        fi
+        ;;
+      Esac
+      ```
 
   - *Erläuterung*:
     - 'nutshutdown' überprüft zuerst, ob das 'Shutdown-Flag' gesetzt worden ist. Ist dies der Fall, wird mit dem Befehl 'upsdrvctl shutdown' auch die USV (zeitgesteuert) heruntergefahren.
@@ -328,11 +327,11 @@ Esac
 
 
 ##### Abschluß Konfiguration 'NUT-Client'
-  Nach der Konfiguration die 'RaspberryMatic' per WebUI neu starten oder den 'NUT' Dienst mittels SSH und folgendem Kommando neustarten:
-  ```
-  /etc/init.d/S51nut restart
-  ```
-  Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwachen und dann bei Ausfall des Stroms als Erstes eine Alarmmeldung innerhalb des HomeMatic-Systems generieren und bei zu langem Ausfall die RaspberryMatic automatisch geordnet herunterfahren.
+Nach der Konfiguration die 'RaspberryMatic' per WebUI neu starten oder den 'NUT' Dienst mittels SSH und folgendem Kommando neustarten:
+```
+/etc/init.d/S51nut restart
+```
+Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwachen und dann bei Ausfall des Stroms als Erstes eine Alarmmeldung innerhalb des HomeMatic-Systems generieren und bei zu langem Ausfall die RaspberryMatic automatisch geordnet herunterfahren.
 
   - Mit Hilfe der SSH-Konsole des 'NUT-Clients' kann man sich auch alle aktuellen Werte der USV des 'NUT-Servers' ausgeben lassen:
     ```

@@ -14,7 +14,6 @@
 
 Ist die 'RaspberryMatic' mit ihrer Stromversorgung an eine USV angeschlossen, die von einem 'NUT-Server' gemanagt wird, dann wird die 'RaspberryMatic' als 'NUT-Client' konfiguriert. Die Konfigurationsdateien können mit 'WinSCP' editiert werden.
 
-
 ##### nut.conf
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Client' handelt:
 
@@ -24,7 +23,6 @@ Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt 
       ```
       MODE=netclient
       ```
-
 
 ##### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
@@ -48,7 +46,6 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
 
   - *Anmerkung*: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
-
 ##### nut_notify.sh
 In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
 
@@ -56,7 +53,6 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 # trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
 /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
 ```
-
 
 ##### upsd.conf
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
@@ -74,7 +70,6 @@ Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adress
       ```
       LISTEN 192.168.10.114 3493
       ```
-
 
 ##### upsd.users
 'NUT' Verwaltungsbefehle wie das Festlegen von Variablen oder die Sofortbefehle sind systemrelevant – daher muss der Zugriff darauf eingeschränkt werden. Diese Datei definiert, wer darauf zugreifen darf und was verfügbar ist.
@@ -100,14 +95,11 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
         upsmon slave
         ```
 
-
 ##### upssched.conf
 Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'upssched.conf'](./RM-NUT_Server.md#upsschedconf)
 
-
 ##### nut_schedule.sh
 Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'nut_schedule.sh'](./RM-NUT_Server.md#nut_schedulesh)
-
 
 ##### Abschluß Konfiguration 'NUT-Client'
 Nach der Konfiguration die 'RaspberryMatic' per WebUI neu starten oder den 'NUT' Dienst mittels SSH und folgendem Kommando neustarten:
@@ -132,13 +124,11 @@ Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwache
 
       ![WW-mySHT - UPSC Client](./img/nut_upsc_client.jpg)
 
-
 ### Setup 'RaspberryMatic' als 'NUT-Client'
 
 - Weiter zu: ['RaspberryMatic' - 'NUT-Client' - vollständige Konfigurationsdateien ...](./bin/RM_NUT_Client)
 
 - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
-
 
 ### Historie
 - 2022-04-18 - Erstveröffentlichung
