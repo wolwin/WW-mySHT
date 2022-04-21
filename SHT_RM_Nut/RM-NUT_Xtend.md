@@ -86,24 +86,24 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
 *Erweiterung*: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeilen eingefügt, die dann bei entsprechenden Events das 'nut_notify.sh' Skript aufrufen:
 
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
-    ```
-    ...
-    NOTIFYCMD /etc/config/nut/nut_notify.sh
+       ```
+       ...
+       NOTIFYCMD /etc/config/nut/nut_notify.sh
 
-    NOTIFYMSG ONLINE      "USV [%s] - Netzbetrieb"
-    NOTIFYMSG ONBATT      "USV [%s] - Batteriebetrieb"
-    NOTIFYMSG LOWBATT     "USV [%s] - schwache Batterie"
-    NOTIFYMSG FSD         "USV [%s] - erzwungenes Herunterfahren wird ausgefuehrt"
-    NOTIFYMSG COMMOK      "USV [%s] - Verbindung mit der USV wieder hergestellt"
-    NOTIFYMSG COMMBAD     "USV [%s] - Verbindung mit der USV verloren"
-    NOTIFYMSG SHUTDOWN    "Automatische Abmeldung und Herunterfahren"
-    NOTIFYMSG REPLBATT    "USV [%s] - Batterie muss ersetzt werden"
-    NOTIFYMSG NOCOMM      "USV [%s] - ist nicht verfuegbar"
-    NOTIFYMSG NOPARENT    "upsmon Elternprozess fehlt - Herunterfahren nicht moeglich"
+       NOTIFYMSG ONLINE      "USV [%s] - Netzbetrieb"
+       NOTIFYMSG ONBATT      "USV [%s] - Batteriebetrieb"
+       NOTIFYMSG LOWBATT     "USV [%s] - schwache Batterie"
+       NOTIFYMSG FSD         "USV [%s] - erzwungenes Herunterfahren wird ausgefuehrt"
+       NOTIFYMSG COMMOK      "USV [%s] - Verbindung mit der USV wieder hergestellt"
+       NOTIFYMSG COMMBAD     "USV [%s] - Verbindung mit der USV verloren"
+       NOTIFYMSG SHUTDOWN    "Automatische Abmeldung und Herunterfahren"
+       NOTIFYMSG REPLBATT    "USV [%s] - Batterie muss ersetzt werden"
+       NOTIFYMSG NOCOMM      "USV [%s] - ist nicht verfuegbar"
+       NOTIFYMSG NOPARENT    "upsmon Elternprozess fehlt - Herunterfahren nicht moeglich"
 
-    NOTIFYFLAG ONLINE   SYSLOG+EXEC
-    ...
-    ```
+       NOTIFYFLAG ONLINE   SYSLOG+EXEC
+       ...
+       ```
 
 #### nut_notify.sh
 *Erweiterung*: für den 'NUT-Client' und den 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41'  durchgeführt.
