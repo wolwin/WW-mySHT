@@ -36,12 +36,12 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
     | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: monuser) |
     | \<PASSWORD\> | Passwort (z.B.: pass) |
 
-  - Beispiel:
-    ```
-    MONITOR ups@192.168.10.114 1 monuser pass slave
-    ```
+    - Beispiel:
+      ```
+      MONITOR ups@192.168.10.114 1 monuser pass slave
+      ```
 
-  - <u>Anmerkung</u>: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
+  - *Anmerkung*: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
 ##### nut_notify.sh
 In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
