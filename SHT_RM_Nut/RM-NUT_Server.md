@@ -84,6 +84,7 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
     - Mit dem 'ondelay' Eintrag wird die Zeit (in Sekunden) angegeben, die von der USV nach dem Wiederkehren des Stroms gewartet wird, bis die angeschlossenen Geräte wieder mit Strom versorgt werden. Der Wert von 'ondelay' muß größer als der Wert von 'offdelay' sein.
     - Optional kann mit 'ignorelb' der USV-Treiber das Flag für niedrigen Batteriezustand, welches von der USV gemeldet wird, ignorieren - einige USV-Geräte schalten sich fast sofort nach dem Setzen dieses Flags aus oder melden dies, sobald das Stromnetz ausfällt. Stattdessen werden die folgenden 'override' Bedingungen verwendet, um festzustellen, wann die Batterie schwach ist.
 
+
 #### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
 
@@ -106,6 +107,7 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
 
   - *Anmerkung*: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
+
 ##### nut_notify.sh
 In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
 
@@ -113,6 +115,7 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 # trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
 /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
 ```
+
 
 ##### upsd.conf
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
@@ -199,6 +202,7 @@ Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfs
       - *Erläuterung*:
         - 'CMDSCRIPT' ist der Pfad zu dem Skript, das ausgeführt werden soll, wenn USV-Trigger gesetzt wurden, die dann die Eventnachrichten an dieses Script weitergeben. Als Beispiel ist dazu die Datei 'nut_schedule.sh' beigefügt (siehe unten), die Email-Nachrichten verschickt. 'PIPEFN' und 'LOCKFN' werden genutzt, um mit den Prozessen (Start- und Stop-Timer) zu agieren. Sie werden automatisch erzeugt und gelöscht - die Ordner müssen für den Prozess beschreibbar sein.
         - Es werden Timer für 'onbatt'. und 'commbad' benutzt, um innerhalb von jeweils 30 Sekunden zu entscheiden, ob wirklich ein entsprechender Event vorliegt.
+
 
 ##### nut_schedule.sh
 Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41' durchgeführt.
@@ -317,10 +321,11 @@ stop)
 Esac
 ```
 
-  - Erläuterung:
+  - *Erläuterung*:
     - 'nutshutdown' überprüft zuerst, ob das 'Shutdown-Flag' gesetzt worden ist. Ist dies der Fall, wird mit dem Befehl 'upsdrvctl shutdown' auch die USV (zeitgesteuert) heruntergefahren.
     - Dies funktioniert auf einem 'Debian' System problemlos, da zu diesem Zeitpunkt die Treiber-Instanz (hier: 'usbhid‑ups') schon beendet ist. Anders beim 'RaspberryMatic'-System: 'nutshutdown' wird in '/usr/local/etc/config/rc.d/' ausgeführt. Zu diesem Zeitpunkt ist die Treiber-Instanz noch nicht beendet worden. Vor dem 'upsdrvctl shutdown' Befehl muss mit 'upsdrvctl stop' die Treiber-Instanz beendet werden, da es sonst zu einem undefinierten Fehler kommt und die USV nicht (zeitgesteuert) herunterfährt
     - Optional kann mit Hilfe des 'Email Addon' noch eine Email-Nachricht abgesetzt werden.
+
 
 ##### Abschluß Konfiguration 'NUT-Client'
   Nach der Konfiguration die 'RaspberryMatic' per WebUI neu starten oder den 'NUT' Dienst mittels SSH und folgendem Kommando neustarten:
