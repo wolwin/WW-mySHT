@@ -88,21 +88,21 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
 
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
-      - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
-              ```
-              MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
-              ```
-              |||
-              | --- | --- |
-              | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
-              | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
-              | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: upsmaster) |
-              | \<PASSWORD\> | Passwort (z.B.: geheim) |
+    - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
+          ```
+          MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
+          ```
+          |||
+          | --- | --- |
+          | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
+          | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+          | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: upsmaster) |
+          | \<PASSWORD\> | Passwort (z.B.: geheim) |
 
-      - Beispiel:
-        ```
-        MONITOR ups@192.168.10.114 1 upsmaster geheim master
-        ```
+    - Beispiel:
+      ```
+      MONITOR ups@192.168.10.114 1 upsmaster geheim master
+      ```
 
   - *Anmerkung*: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
@@ -118,19 +118,19 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
 
   -	Anpassen der Datei /etc/config/nut/upsd.conf
-      -	Nach der letzten Kommentarzeile einfügen:
-              ```
-              LISTEN <IP-ADRESS> 3493
-              ```
-              |||
-              | --- | --- |
-              | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+    -	Nach der letzten Kommentarzeile einfügen:
+          ```
+          LISTEN <IP-ADRESS> 3493
+          ```
+          |||
+          | --- | --- |
+          | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
 
-      - Beispiel:
-        ```
-        LISTEN 127.0.0.1 3493
-        LISTEN 192.168.10.114 3493
-        ```
+    - Beispiel:
+      ```
+      LISTEN 127.0.0.1 3493
+      LISTEN 192.168.10.114 3493
+      ```
 
 ##### upsd.users
 'NUT' Verwaltungsbefehle wie das Festlegen von Variablen oder die Sofortbefehle sind systemrelevant – daher muss der Zugriff darauf eingeschränkt werden. Diese Datei definiert, wer darauf zugreifen darf und was verfügbar ist.
@@ -157,20 +157,20 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
           | \<PASSWORD-S\> |	Passwort (z.B.: pass) |
 
     - Beispiel:
-          ```
-          [upsmaster]
-          password = geheim
-          # Allow changing values of certain variables in the UPS
-          actions = SET
-          # Allow setting the 'Forced Shutdown' flag in the UPS
-          actions = FSD
-          instcmds = ALL
-          upsmon master
+      ```
+      [upsmaster]
+      password = geheim
+      # Allow changing values of certain variables in the UPS
+      actions = SET
+      # Allow setting the 'Forced Shutdown' flag in the UPS
+      actions = FSD
+      instcmds = ALL
+      upsmon master
 
-          [monuser]
-          password = pass
-          upsmon slave
-          ```
+      [monuser]
+      password = pass
+      upsmon slave
+      ```
 
 ##### upssched.conf
 Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfsprogramm für 'upsmon'. Hier können eigene Skripte definiert werden, die bei bestimmten Ereignissen ausgeführt werden.
