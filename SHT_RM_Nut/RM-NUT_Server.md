@@ -186,15 +186,15 @@ Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfs
       LOCKFN /var/state/ups/upssched.lock
       ```
     -	Nach der letzten Kommentarzeile die unten aufgeführten 'AT' Befehlszeilen einfügen einfügen:
-      ```
-      AT ONBATT * START-TIMER onbatt 30
-      AT ONLINE * CANCEL-TIMER onbatt online
-      AT LOWBATT * EXECUTE onbatt
-      AT COMMBAD * START-TIMER commbad 30
-      AT COMMOK * CANCEL-TIMER commbad commok
-      AT NOCOMM * EXECUTE commbad
-      AT SHUTDOWN * EXECUTE powerdown
-      ```
+        ```
+        AT ONBATT * START-TIMER onbatt 30
+        AT ONLINE * CANCEL-TIMER onbatt online
+        AT LOWBATT * EXECUTE onbatt
+        AT COMMBAD * START-TIMER commbad 30
+        AT COMMOK * CANCEL-TIMER commbad commok
+        AT NOCOMM * EXECUTE commbad
+        AT SHUTDOWN * EXECUTE powerdown
+        ```
 
     - *Erläuterung*:
       - 'CMDSCRIPT' ist der Pfad zu dem Skript, das ausgeführt werden soll, wenn USV-Trigger gesetzt wurden, die dann die Eventnachrichten an dieses Script weitergeben. Als Beispiel ist dazu die Datei 'nut_schedule.sh' beigefügt (siehe unten), die Email-Nachrichten verschickt. 'PIPEFN' und 'LOCKFN' werden genutzt, um mit den Prozessen (Start- und Stop-Timer) zu agieren. Sie werden automatisch erzeugt und gelöscht - die Ordner müssen für den Prozess beschreibbar sein.
