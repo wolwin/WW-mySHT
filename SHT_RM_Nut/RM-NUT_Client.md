@@ -75,15 +75,15 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
 
 -	Anpassen der Datei */etc/config/nut/upsd.users*
   -	Nach der letzten Kommentarzeile einfügen:
-    ```
-    [<USERNAME-S>]
-    password = <PASSWORD-S>
-    upsmon slave
-    ```    
-    |||
-    | --- | --- |
-    | \<USERNAME-S\> |	'NUT-Client' Nutzername (z.B.: monuser) |
-    | \<PASSWORD-S\> |	Passwort (z.B.: pass) |
+        ```
+        [<USERNAME-S>]
+        password = <PASSWORD-S>
+        upsmon slave
+        ```    
+        |||
+        | --- | --- |
+        | \<USERNAME-S\> |	'NUT-Client' Nutzername (z.B.: monuser) |
+        | \<PASSWORD-S\> |	Passwort (z.B.: pass) |
 
     - Beispiel:
       ```
