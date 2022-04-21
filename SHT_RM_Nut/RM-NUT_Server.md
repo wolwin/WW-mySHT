@@ -78,7 +78,7 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
               override.battery.runtime.low = 300
           ```
 
-  - Erläuterung:
+  - *Erläuterung*:
     - Die APC USV mit dem NUT-Device Namen 'ups' wird über den USB-Port 'automatisch' mit dem Treiber 'usbhid‑ups' eingebunden. Die untere Schwelle der Batterie-Kapazität wird mit 'lowbatt' auf 33% gesetzt, damit die USV nach Wiederkehren der Stromversorgung direkt starten kann, ohne vorher lange die USV-Batterie erst laden zu müssen.
     - Mit dem 'offdelay' Eintrag wird der Zeitraum (in Sekunden) für das Abschalten der UPS nach dem 'kill power'-Befehl definiert. Mit 120 Sekunden ist ausreichend Zeit, um die 'RaspberryMatic' definiert herunterzufahren, bevor die USV sich ausschaltet – der Wert kann bei Bedarf geändert werden.
     - Mit dem 'ondelay' Eintrag wird die Zeit (in Sekunden) angegeben, die von der USV nach dem Wiederkehren des Stroms gewartet wird, bis die angeschlossenen Geräte wieder mit Strom versorgt werden. Der Wert von 'ondelay' muß größer als der Wert von 'offdelay' sein.
@@ -88,7 +88,6 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
 
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
-
       - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
               ```
               MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
@@ -105,7 +104,7 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
         MONITOR ups@192.168.10.114 1 upsmaster geheim master
         ```
 
-  - *Anmerkung* für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
+  - *Anmerkung*: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
 ##### nut_notify.sh
 In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
@@ -119,7 +118,6 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
 
   -	Anpassen der Datei /etc/config/nut/upsd.conf
-
       -	Nach der letzten Kommentarzeile einfügen:
               ```
               LISTEN <IP-ADRESS> 3493
@@ -140,7 +138,6 @@ Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhos
 Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt legen die Parameter fest, die den Berechtigungen dieses Benutzers zugeordnet sind. Der Abschnitt beginnt mit dem Namen des Benutzers in Klammern und wird bis zum nächsten Benutzernamen in Klammern oder EOF fortgesetzt. Diese Benutzer sind unabhängig von den Benutzer in '/etc/passwd'.
 
   -	Anpassen der Datei */etc/config/nut/upsd.users*
-
     -	Nach der letzten Kommentarzeile einfügen:
           ```
           [<USERNAME-M>]
@@ -179,7 +176,6 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
 Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfsprogramm für 'upsmon'. Hier können eigene Skripte definiert werden, die bei bestimmten Ereignissen ausgeführt werden.
 
   -	Anpassen der Datei /etc/config/nut/upssched.conf
-
     - 'CMDSCRIPT' Eintrag ändern in:
           ```
           CMDSCRIPT /usr/bin/nut_upssched.sh
@@ -200,7 +196,7 @@ Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfs
           AT SHUTDOWN * EXECUTE powerdown
           ```
 
-      - Erläuterung:
+      - *Erläuterung*:
         - 'CMDSCRIPT' ist der Pfad zu dem Skript, das ausgeführt werden soll, wenn USV-Trigger gesetzt wurden, die dann die Eventnachrichten an dieses Script weitergeben. Als Beispiel ist dazu die Datei 'nut_schedule.sh' beigefügt (siehe unten), die Email-Nachrichten verschickt. 'PIPEFN' und 'LOCKFN' werden genutzt, um mit den Prozessen (Start- und Stop-Timer) zu agieren. Sie werden automatisch erzeugt und gelöscht - die Ordner müssen für den Prozess beschreibbar sein.
         - Es werden Timer für 'onbatt'. und 'commbad' benutzt, um innerhalb von jeweils 30 Sekunden zu entscheiden, ob wirklich ein entsprechender Event vorliegt.
 
