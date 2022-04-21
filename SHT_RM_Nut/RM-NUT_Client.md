@@ -56,12 +56,12 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
 
   -	Anpassen der Datei /etc/config/nut/upsd.conf
     -	Nach der letzten Kommentarzeile einfügen:
-    ```
-    LISTEN <IP-ADRESS> 3493
-    ```
-    |||
-    | --- | --- |
-    | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+      ```
+      LISTEN <IP-ADRESS> 3493
+      ```
+      |||
+      | --- | --- |
+      | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
 
     - Beispiel:
       ```
@@ -118,6 +118,7 @@ Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwache
       ```
       upsc ups@192.168.10.114
      ```
+     
      ![WW-mySHT - UPSC Client](./img/nut_upsc_client.jpg)
 
 ### Setup 'RaspberryMatic' als 'NUT-Client'
