@@ -22,9 +22,9 @@ Im Beispiel ist die USV eine 'Back-UPS CS 650' der Firma APC – dafür wird der
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Server' handelt:
 -	Anpassen der Datei */etc/config/nut/nut.conf*
   - Eintrag 'MODE=none' ändern in:
-```
-MODE=netserver
-```
+    ```
+    MODE=netserver
+    ```
 
 ##### ups.conf
 Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 'NUT' mit, mit welcher Art von USV-Gerät es arbeiten soll. Einige Einstellungen zur Steuerung der Kommunikation mit dem USV-Gerät können konfiguriert werden – außerdem können einige der USV-Geräteparameter überschrieben werden. Hier wird der 'NUT-Server' für die angeschlossene USV konfiguriert:
