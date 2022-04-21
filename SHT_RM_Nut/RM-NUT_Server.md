@@ -20,66 +20,69 @@ Im Beispiel ist die USV eine 'Back-UPS CS 650' der Firma APC – dafür wird der
 
 ##### nut.conf
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Server' handelt:
--	Anpassen der Datei */etc/config/nut/nut.conf*
-  - Eintrag 'MODE=none' ändern in:
-    ```
-    MODE=netserver
-    ```
+
+  -	Anpassen der Datei */etc/config/nut/nut.conf*
+
+    - Eintrag 'MODE=none' ändern in:
+      ```
+      MODE=netserver
+      ```
 
 ##### ups.conf
 Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 'NUT' mit, mit welcher Art von USV-Gerät es arbeiten soll. Einige Einstellungen zur Steuerung der Kommunikation mit dem USV-Gerät können konfiguriert werden – außerdem können einige der USV-Geräteparameter überschrieben werden. Hier wird der 'NUT-Server' für die angeschlossene USV konfiguriert:
--	Anpassen der Datei */etc/config/nut/ups.conf*
-  -	Nach der letzten Kommentarzeile einfügen:
-    ```
-    # Set maxretry to 3 by default, this should mitigate race with slow devices:
-    maxretry = 3
-    ```
-    ```
-    [ups]
-        desc = "APC Back-UPS CS 650"
-        # driver.name
-        driver = "usbhid-ups"
-        # driver.parameter.port
-        port = "auto"
-        # driver.parameter.pollintervall
-        pollinterval = 15
-    ```
-    ```
-        # driver.parameter.lowbatt
-        # sets also the default value for battery.charge.low
-        lowbatt = 33
-    ```
-    ```
-        # driver.parameter.offdelay
-        # sets also ups.delay.shutdown
-        # Set the timer before the UPS is turned off after the kill power command is sent (via the -k switch)
-        offdelay = 120
-    ```
-    ```
-        # driver.parameter.ondelay
-        # sets also ups.delay.start
-        # Set the timer for the UPS to switch on in case the power returns after the kill power command had been
-        # sent, but before the actual switch off. This ensures the machines connected to the UPS are, in all cases,
-        # rebooted after a power failure. Usually this must be greater than offdelay
-        ondelay = 130
-    ```
-    ```
-        # Optional. When you specify this, the driver ignores a low battery condition flag that is
-        # reported by the UPS (some devices will switch off almost immediately after setting this
-        # flag, or will report this as soon as the mains fails). Instead it will use either of the
-        # following conditions to determine when the battery is low
-        ignorelb
-        override.battery.charge.low = 33
-        override.battery.charge.warning = 50
-        override.battery.runtime.low = 300
-    ```
+
+  -	Anpassen der Datei */etc/config/nut/ups.conf*
+
+    -	Nach der letzten Kommentarzeile einfügen:
+      ```
+      # Set maxretry to 3 by default, this should mitigate race with slow devices:
+      maxretry = 3
+      ```
+      ```
+      [ups]
+          desc = "APC Back-UPS CS 650"
+          # driver.name
+          driver = "usbhid-ups"
+          # driver.parameter.port
+          port = "auto"
+          # driver.parameter.pollintervall
+          pollinterval = 15
+      ```
+      ```
+          # driver.parameter.lowbatt
+          # sets also the default value for battery.charge.low
+          lowbatt = 33
+      ```
+      ```
+          # driver.parameter.offdelay
+          # sets also ups.delay.shutdown
+          # Set the timer before the UPS is turned off after the kill power command is sent (via the -k switch)
+          offdelay = 120
+      ```
+      ```
+          # driver.parameter.ondelay
+          # sets also ups.delay.start
+          # Set the timer for the UPS to switch on in case the power returns after the kill power command had been
+          # sent, but before the actual switch off. This ensures the machines connected to the UPS are, in all cases,
+          # rebooted after a power failure. Usually this must be greater than offdelay
+          ondelay = 130
+      ```
+      ```
+          # Optional. When you specify this, the driver ignores a low battery condition flag that is
+          # reported by the UPS (some devices will switch off almost immediately after setting this
+          # flag, or will report this as soon as the mains fails). Instead it will use either of the
+          # following conditions to determine when the battery is low
+          ignorelb
+          override.battery.charge.low = 33
+          override.battery.charge.warning = 50
+          override.battery.runtime.low = 300
+      ```
 
   - Erläuterung:
     - Die APC USV mit dem NUT-Device Namen 'ups' wird über den USB-Port 'automatisch' mit dem Treiber 'usbhid‑ups' eingebunden. Die untere Schwelle der Batterie-Kapazität wird mit 'lowbatt' auf 33% gesetzt, damit die USV nach Wiederkehren der Stromversorgung direkt starten kann, ohne vorher lange die USV-Batterie erst laden zu müssen.
     - Mit dem 'offdelay' Eintrag wird der Zeitraum (in Sekunden) für das Abschalten der UPS nach dem 'kill power'-Befehl definiert. Mit 120 Sekunden ist ausreichend Zeit, um die 'RaspberryMatic' definiert herunterzufahren, bevor die USV sich ausschaltet – der Wert kann bei Bedarf geändert werden.
     - Mit dem 'ondelay' Eintrag wird die Zeit (in Sekunden) angegeben, die von der USV nach dem Wiederkehren des Stroms gewartet wird, bis die angeschlossenen Geräte wieder mit Strom versorgt werden. Der Wert von 'ondelay' muß größer als der Wert von 'offdelay' sein.
     - Optional kann mit 'ignorelb' der USV-Treiber das Flag für niedrigen Batteriezustand, welches von der USV gemeldet wird, ignorieren - einige USV-Geräte schalten sich fast sofort nach dem Setzen dieses Flags aus oder melden dies, sobald das Stromnetz ausfällt. Stattdessen werden die folgenden 'override' Bedingungen verwendet, um festzustellen, wann die Batterie schwach ist.
-
 
 #### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
