@@ -118,8 +118,8 @@ Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwache
       ```
       upsc ups@192.168.10.114
      ```
-     
-     ![WW-mySHT - UPSC Client](./img/nut_upsc_client.jpg)
+
+![WW-mySHT - UPSC Client](./img/nut_upsc_client.jpg)
 
 ### Setup 'RaspberryMatic' als 'NUT-Client'
 
