@@ -16,25 +16,27 @@ Ist die 'RaspberryMatic' mit ihrer Stromversorgung an eine USV angeschlossen, di
 
 ##### nut.conf
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Client' handelt:
+
 -	Anpassen der Datei */etc/config/nut/nut.conf*
   - Eintrag 'MODE=none' ändern in:
-    ```
-    MODE=netclient
-    ```
+          ```
+          MODE=netclient
+          ```
 
 ##### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
--	Anpassen der Datei */etc/config/nut/upsmon.conf*
-  - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
-    ```
-    MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> slave
-    ```
-    |||
-    | --- | --- |
-    | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
-    | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
-    | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: monuser) |
-    | \<PASSWORD\> | Passwort (z.B.: pass) |
+
+  -	Anpassen der Datei */etc/config/nut/upsmon.conf*
+    - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
+          ```
+          MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> slave
+          ```
+          |||
+          | --- | --- |
+          | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
+          | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+          | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: monuser) |
+          | \<PASSWORD\> | Passwort (z.B.: pass) |
 
     - Beispiel:
       ```
