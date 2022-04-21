@@ -18,7 +18,7 @@ Als erstes ist zu verifizieren, welche USV in 'NUT' eingebunden werden soll, dam
 
 Im Beispiel ist die USV eine 'Back-UPS CS 650' der Firma APC – dafür wird der Treiber 'usbhid-ups' benötigt.
 
-##### nut.conf
+#### nut.conf
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Server' handelt:
 
   -	Anpassen der Datei */etc/config/nut/nut.conf*
@@ -28,7 +28,7 @@ Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt 
       MODE=netserver
       ```
 
-##### ups.conf
+#### ups.conf
 Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 'NUT' mit, mit welcher Art von USV-Gerät es arbeiten soll. Einige Einstellungen zur Steuerung der Kommunikation mit dem USV-Gerät können konfiguriert werden – außerdem können einige der USV-Geräteparameter überschrieben werden. Hier wird der 'NUT-Server' für die angeschlossene USV konfiguriert:
 
   -	Anpassen der Datei */etc/config/nut/ups.conf*
@@ -106,7 +106,7 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
 
   - *Anmerkung*: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
-##### nut_notify.sh
+#### nut_notify.sh
 In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
 
 ```
@@ -114,7 +114,7 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
 ```
 
-##### upsd.conf
+#### upsd.conf
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
 
   -	Anpassen der Datei */etc/config/nut/upsd.conf*
@@ -132,7 +132,7 @@ Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhos
       LISTEN 192.168.10.114 3493
       ```
 
-##### upsd.users
+#### upsd.users
 'NUT' Verwaltungsbefehle wie das Festlegen von Variablen oder die Sofortbefehle sind systemrelevant – daher muss der Zugriff darauf eingeschränkt werden. Diese Datei definiert, wer darauf zugreifen darf und was verfügbar ist.
 
 Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt legen die Parameter fest, die den Berechtigungen dieses Benutzers zugeordnet sind. Der Abschnitt beginnt mit dem Namen des Benutzers in Klammern und wird bis zum nächsten Benutzernamen in Klammern oder EOF fortgesetzt. Diese Benutzer sind unabhängig von den Benutzer in '/etc/passwd'.
@@ -172,7 +172,7 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
       upsmon slave
       ```
 
-##### upssched.conf
+#### upssched.conf
 Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfsprogramm für 'upsmon'. Hier können eigene Skripte definiert werden, die bei bestimmten Ereignissen ausgeführt werden.
 
   -	Anpassen der Datei */etc/config/nut/upssched.conf*
@@ -203,7 +203,7 @@ Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfs
       - Es werden Timer für 'onbatt'. und 'commbad' benutzt, um innerhalb von jeweils 30 Sekunden zu entscheiden, ob wirklich ein entsprechender Event vorliegt.
 
 
-##### nut_schedule.sh
+#### nut_schedule.sh
 Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41' durchgeführt.
 
   -	Optional, wenn in 'upssched.conf' definiert: Anlegen der Datei */etc/config/nut/nut_schedule.sh*
@@ -284,12 +284,12 @@ Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email
       exit 0
       ```
 
-##### nutshutdown
+#### nutshutdown
 Die Datei 'nutshutdown' wird zum Ende des 'NUT' Herunterfahren-Prozesses ausgeführt, um die USV gezielt als letztes Gerät auszuschalten. Regulär wird diese Datei automatisch vom 'NUT' Installationspaket in '/lib/systemd/system-shutdown' angelegt und ist damit im Shutdown Prozess des Systems integriert.
 
 Auf der RaspberryMatic gibt es keine 'systemd' Funktionalität und damit ist per Default keine 'nutshutdown' Funktion vorhanden. Diese Funktion kann jedoch nachgebildet werden, indem man so vorgeht:
 
-  -	Einfügen der Datei /usr/local/etc/config/rc.d/nutshutdown
+  -	Einfügen der Datei */usr/local/etc/config/rc.d/nutshutdown*
     - Datei 'nutshutdown' mit folgendem Inhalt anlegen:
     - Datei-Rechte auf '0x0755' – 'root[0]' setzen
 
@@ -326,7 +326,7 @@ Auf der RaspberryMatic gibt es keine 'systemd' Funktionalität und damit ist per
     - Optional kann mit Hilfe des 'Email Addon' noch eine Email-Nachricht abgesetzt werden.
 
 
-##### Abschluß Konfiguration 'NUT-Client'
+#### Abschluß Konfiguration 'NUT-Client'
 Nach der Konfiguration die 'RaspberryMatic' per WebUI neu starten oder den 'NUT' Dienst mittels SSH und folgendem Kommando neustarten:
 ```
 /etc/init.d/S51nut restart
