@@ -56,12 +56,12 @@ Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adress
 
   -	Anpassen der Datei /etc/config/nut/upsd.conf
     -	Nach der letzten Kommentarzeile einfügen:
-      ```
-      LISTEN <IP-ADRESS> 3493
-      ```
-      |||
-      | --- | --- |
-      | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+          ```
+          LISTEN <IP-ADRESS> 3493
+          ```
+          |||
+          | --- | --- |
+          | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
 
     - Beispiel:
       ```
