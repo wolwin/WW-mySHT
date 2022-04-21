@@ -90,21 +90,6 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
     -	Eintrag '\# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
           ```
-          LISTEN <IP-ADRESS> 3493
-          ```
-          |||
-          | --- | --- |
-          | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
-          | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
-          | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: upsmaster) |
-          | \<PASSWORD\> | Passwort (z.B.: geheim) |
-
-
-
-
-  -	Anpassen der Datei */etc/config/nut/upsmon.conf*
-    - Eintrag '\# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
-          ```
           MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
           ```
           |||
