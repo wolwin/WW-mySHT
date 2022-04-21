@@ -86,121 +86,127 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
 
 #### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
--	Anpassen der Datei */etc/config/nut/upsmon.conf*
-  - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
-    ```
-    MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
-    ```
-    |||
-    | --- | --- |
-    | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
-    | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
-    | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: upsmaster) |
-    | \<PASSWORD\> | Passwort (z.B.: geheim) |
 
-  - Beispiel:
-    ```
-    MONITOR ups@192.168.10.114 1 upsmaster geheim master
-    ```
+  -	Anpassen der Datei */etc/config/nut/upsmon.conf*
 
-  - <u>Anmerkung</u>: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
-
-##### nut_notify.sh
-  In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
-
-  ```
-  # trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
-  /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
-  ```
-
-##### upsd.conf
-  Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
-
-  -	Anpassen der Datei /etc/config/nut/upsd.conf
-    -	Nach der letzten Kommentarzeile einfügen:
-      ```
-      LISTEN <IP-ADRESS> 3493
-      ```
-      |||
-      | --- | --- |
-      | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
-
-    - Beispiel:
-      ```
-      LISTEN 127.0.0.1 3493
-      LISTEN 192.168.10.114 3493
-      ```
-
-##### upsd.users
-  'NUT' Verwaltungsbefehle wie das Festlegen von Variablen oder die Sofortbefehle sind systemrelevant – daher muss der Zugriff darauf eingeschränkt werden. Diese Datei definiert, wer darauf zugreifen darf und was verfügbar ist.
-
-  Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt legen die Parameter fest, die den Berechtigungen dieses Benutzers zugeordnet sind. Der Abschnitt beginnt mit dem Namen des Benutzers in Klammern und wird bis zum nächsten Benutzernamen in Klammern oder EOF fortgesetzt. Diese Benutzer sind unabhängig von den Benutzer in '/etc/passwd'.
-
-  -	Anpassen der Datei */etc/config/nut/upsd.users*
-    -	Nach der letzten Kommentarzeile einfügen:
-      ```
-      [<USERNAME-M>]
-      password = <PASSWORD-M>
-      upsmon master
-      ```    
-      ```
-      [<USERNAME-S>]
-      password = <PASSWORD-S>
-      upsmon slave
-      ```    
-      |||
-      | --- | --- |
-      | \<USERNAME-M\> |	'NUT-Server' Nutzername (z.B.: upsmaster) |
-      | \<PASSWORD-M\> |	Passwort (z.B.: geheim) |
-      | \<USERNAME-S\> |	'NUT-Client' Nutzername (z.B.: monuser) |
-      | \<PASSWORD-S\> |	Passwort (z.B.: pass) |
+      - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
+              ```
+              MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
+              ```
+              |||
+              | --- | --- |
+              | \<UPSNAME\> | Name des UPS-Devices des 'NUT-Servers' (z.B.: ups) |
+              | \<IP-ADRESS\> | IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+              | \<USERNAME\> | 'NUT-Client' Nutzername (z.B.: upsmaster) |
+              | \<PASSWORD\> | Passwort (z.B.: geheim) |
 
       - Beispiel:
         ```
-        [upsmaster]
-        password = geheim
-        # Allow changing values of certain variables in the UPS
-        actions = SET
-        # Allow setting the 'Forced Shutdown' flag in the UPS
-        actions = FSD
-        instcmds = ALL
-        upsmon master
-
-        [monuser]
-        password = pass
-        upsmon slave
+        MONITOR ups@192.168.10.114 1 upsmaster geheim master
         ```
+
+  - *Anmerkung* für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
+
+##### nut_notify.sh
+In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
+
+```
+# trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
+/bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
+```
+
+##### upsd.conf
+Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
+
+  -	Anpassen der Datei /etc/config/nut/upsd.conf
+
+      -	Nach der letzten Kommentarzeile einfügen:
+              ```
+              LISTEN <IP-ADRESS> 3493
+              ```
+              |||
+              | --- | --- |
+              | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+
+      - Beispiel:
+        ```
+        LISTEN 127.0.0.1 3493
+        LISTEN 192.168.10.114 3493
+        ```
+
+##### upsd.users
+'NUT' Verwaltungsbefehle wie das Festlegen von Variablen oder die Sofortbefehle sind systemrelevant – daher muss der Zugriff darauf eingeschränkt werden. Diese Datei definiert, wer darauf zugreifen darf und was verfügbar ist.
+
+Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt legen die Parameter fest, die den Berechtigungen dieses Benutzers zugeordnet sind. Der Abschnitt beginnt mit dem Namen des Benutzers in Klammern und wird bis zum nächsten Benutzernamen in Klammern oder EOF fortgesetzt. Diese Benutzer sind unabhängig von den Benutzer in '/etc/passwd'.
+
+  -	Anpassen der Datei */etc/config/nut/upsd.users*
+
+    -	Nach der letzten Kommentarzeile einfügen:
+          ```
+          [<USERNAME-M>]
+          password = <PASSWORD-M>
+          upsmon master
+          ```    
+          ```
+          [<USERNAME-S>]
+          password = <PASSWORD-S>
+          upsmon slave
+          ```    
+          |||
+          | --- | --- |
+          | \<USERNAME-M\> |	'NUT-Server' Nutzername (z.B.: upsmaster) |
+          | \<PASSWORD-M\> |	Passwort (z.B.: geheim) |
+          | \<USERNAME-S\> |	'NUT-Client' Nutzername (z.B.: monuser) |
+          | \<PASSWORD-S\> |	Passwort (z.B.: pass) |
+
+    - Beispiel:
+          ```
+          [upsmaster]
+          password = geheim
+          # Allow changing values of certain variables in the UPS
+          actions = SET
+          # Allow setting the 'Forced Shutdown' flag in the UPS
+          actions = FSD
+          instcmds = ALL
+          upsmon master
+
+          [monuser]
+          password = pass
+          upsmon slave
+          ```
 
 ##### upssched.conf
 Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfsprogramm für 'upsmon'. Hier können eigene Skripte definiert werden, die bei bestimmten Ereignissen ausgeführt werden.
 
   -	Anpassen der Datei /etc/config/nut/upssched.conf
+
     - 'CMDSCRIPT' Eintrag ändern in:
-      ```
-      CMDSCRIPT /usr/bin/nut_upssched.sh
-      ```
+          ```
+          CMDSCRIPT /usr/bin/nut_upssched.sh
+          ```
     - '#' Kommentarzeichen vor den 'PIPEFN' und 'LOCKFN' entfernen und Pfadangaben ändern in:
-      ```
-      PIPEFN /var/state/ups/upssched.pipe
-      LOCKFN /var/state/ups/upssched.lock
-      ```
+          ```
+          PIPEFN /var/state/ups/upssched.pipe
+          LOCKFN /var/state/ups/upssched.lock
+          ```
     -	Nach der letzten Kommentarzeile die unten aufgeführten 'AT' Befehlszeilen einfügen einfügen:
-      ```
-      AT ONBATT * START-TIMER onbatt 30
-      AT ONLINE * CANCEL-TIMER onbatt online
-      AT LOWBATT * EXECUTE onbatt
-      AT COMMBAD * START-TIMER commbad 30
-      AT COMMOK * CANCEL-TIMER commbad commok
-      AT NOCOMM * EXECUTE commbad
-      AT SHUTDOWN * EXECUTE powerdown
-      ```
+          ```
+          AT ONBATT * START-TIMER onbatt 30
+          AT ONLINE * CANCEL-TIMER onbatt online
+          AT LOWBATT * EXECUTE onbatt
+          AT COMMBAD * START-TIMER commbad 30
+          AT COMMOK * CANCEL-TIMER commbad commok
+          AT NOCOMM * EXECUTE commbad
+          AT SHUTDOWN * EXECUTE powerdown
+          ```
 
       - Erläuterung:
         - 'CMDSCRIPT' ist der Pfad zu dem Skript, das ausgeführt werden soll, wenn USV-Trigger gesetzt wurden, die dann die Eventnachrichten an dieses Script weitergeben. Als Beispiel ist dazu die Datei 'nut_schedule.sh' beigefügt (siehe unten), die Email-Nachrichten verschickt. 'PIPEFN' und 'LOCKFN' werden genutzt, um mit den Prozessen (Start- und Stop-Timer) zu agieren. Sie werden automatisch erzeugt und gelöscht - die Ordner müssen für den Prozess beschreibbar sein.
         - Es werden Timer für 'onbatt'. und 'commbad' benutzt, um innerhalb von jeweils 30 Sekunden zu entscheiden, ob wirklich ein entsprechender Event vorliegt.
 
 ##### nut_schedule.sh
-  Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41' durchgeführt.
+Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41' durchgeführt.
+
   -	Optional, wenn in 'upssched.conf' definiert: Anlegen der Datei /etc/config/nut/nut_schedule.sh
     -	Datei 'nut_schedule.sh' mit folgendem Inhalt anlegen:
     - Datei-Rechte auf '0x0755' – 'root[0]' setzen
