@@ -44,15 +44,15 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
   - <u>Anmerkung</u>: für die Verbindung zu einem ein Synology NAS muss immer <USERNAME> 'monuser' und <PASSWORD> 'secret' verwendet werden (d.h. es muss kein NAS Nutzer angelegt werden).
 
 ##### nut_notify.sh
-  In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
+In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_notify.sh' festgelegt, dass das 'nut_notify.sh' Skript aufgerufen wird, sobald 'NUT' ein angeschlossenes USV-System identifiziert, das Aufmerksamkeit erfordert. Mit diesem Skript wird eine Alarm-Meldung an die 'RaspberryMatic' geschickt:
 
-  ```
-  # trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
-  /bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
-  ```
+```
+# trigger a HomeMatic alarm message to "${UPSNAME}-Alarm"
+/bin/triggerAlarm.tcl "${NOTIFYTYPE}" "${UPSNAME}-Alarm"
+```
 
 ##### upsd.conf
-  Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
+Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
 
   -	Anpassen der Datei /etc/config/nut/upsd.conf
     -	Nach der letzten Kommentarzeile einfügen:
@@ -93,10 +93,10 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
       ```
 
 ##### upssched.conf
-  Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'upssched.conf'](./RM-NUT_Server.md#upsschedconf)
+Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'upssched.conf'](./RM-NUT_Server.md#upsschedconf)
 
 ##### nut_schedule.sh
-  Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'nut_schedule.sh'](./RM-NUT_Server.md#nut_schedulesh)
+Siehe unter: ['RaspberryMatic' als 'NUT-Server' konfigurieren – 'nut_schedule.sh'](./RM-NUT_Server.md#nut_schedulesh)
 
 ##### Abschluß Konfiguration 'NUT-Client'
 Nach der Konfiguration die 'RaspberryMatic' per WebUI neu starten oder den 'NUT' Dienst mittels SSH und folgendem Kommando neustarten:
