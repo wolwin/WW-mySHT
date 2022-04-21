@@ -18,6 +18,7 @@ Ist die 'RaspberryMatic' mit ihrer Stromversorgung an eine USV angeschlossen, di
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Client' handelt:
 
   -	Anpassen der Datei */etc/config/nut/nut.conf*
+
     - Eintrag 'MODE=none' ändern in:
       ```
       MODE=netclient
