@@ -87,6 +87,18 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
 #### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
 
+-	Anpassen der Datei */etc/config/nut/upsd.conf*
+  -	Nach der letzten Kommentarzeile einfügen:
+        ```
+        LISTEN <IP-ADRESS> 3493
+        ```
+        |||
+        | --- | --- |
+        | \<IP-ADRESS\> |	IP-Adresse des 'NUT-Servers' (z.B.: 192.168.10.114) |
+
+
+
+
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
     - Eintrag '\# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
           ```
