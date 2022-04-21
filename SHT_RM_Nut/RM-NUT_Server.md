@@ -89,6 +89,7 @@ Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'ups
 
   -	Anpassen der Datei */etc/config/nut/upsmon.conf*
     - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
+
           ```
           MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
           ```
