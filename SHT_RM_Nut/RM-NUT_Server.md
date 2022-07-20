@@ -223,7 +223,7 @@ Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email
       		STAT=`upsc $myUpsName ups.status`
       		BATT=`upsc $myUpsName battery.charge`
       		RUNTIME=`upsc $myUpsName battery.runtime`
-                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                       myMsg="$myMsg\nDas System laeuft seit mehr als 5 Minuten im Batteriebetrieb.\n"
                       myMsg="$myMsg\nUSV-Status : $STAT"
                       myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
@@ -234,7 +234,7 @@ Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email
       		STAT=`upsc $myUpsName ups.status`
       		BATT=`upsc $myUpsName battery.charge`
       		RUNTIME=`upsc $myUpsName battery.runtime`
-                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                       myMsg="$myMsg\nDas System laeuft jetzt wieder im Netzbetrieb.\n"
                       myMsg="$myMsg\nUSV-Status : $STAT"
                       myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
@@ -249,7 +249,7 @@ Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email
       		STAT=`upsc $myUpsName ups.status`
       		BATT=`upsc $myUpsName battery.charge`
       		RUNTIME=`upsc $myUpsName battery.runtime`
-                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                       myMsg="$myMsg\nDas System hat die Verbindung mit der USV wieder hergestellt.\n"
                       myMsg="$myMsg\nUSV-Status : $STAT"
                       myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
@@ -260,7 +260,7 @@ Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email
       		STAT=`upsc $myUpsName ups.status`
       		BATT=`upsc $myUpsName battery.charge`
       		RUNTIME=`upsc $myUpsName battery.runtime`
-                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+                      RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                       myMsg="$myMsg\n!!! Das System faehrt wegen eines Stromausfalls herunter!!!\n"
                       myMsg="$myMsg\nUSV-Status : $STAT"
                       myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
@@ -306,6 +306,8 @@ Auf der RaspberryMatic gibt es keine 'systemd' Funktionalität und damit ist per
         # NUT-Original: /sbin/upsmon -K >/dev/null 2>&1 && /sbin/upsdrvctl shutdown
         # Test for the UPS shutdown flag
         if /usr/sbin/upsmon -K >/dev/null 2>&1; then
+        # Alternative: if upsmon is not working properly, you can try the following line instaed
+        # if (test -f /var/tmp/killpower)
           # Stop UPS driver instance
           /usr/sbin/upsdrvctl stop
           sleep 2
@@ -360,4 +362,5 @@ Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwache
 - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
 
 ### Historie
+- 2022-07-20 - nutshutdown und nut_schedule.sh Aktualisierung
 - 2022-04-18 - Erstveröffentlichung

@@ -131,4 +131,5 @@ Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwache
 - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
 
 ### Historie
+- 2022-07-20 - nutshutdown Aktualisierung
 - 2022-04-18 - Erstveröffentlichung
