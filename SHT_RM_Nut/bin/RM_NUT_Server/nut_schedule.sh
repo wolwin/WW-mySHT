@@ -12,7 +12,7 @@ case $1 in
 		STAT=`upsc $myUpsName ups.status`
 		BATT=`upsc $myUpsName battery.charge`
 		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+				RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                 myMsg="$myMsg\nDas System laeuft seit mehr als 5 Minuten im Batteriebetrieb.\n"
                 myMsg="$myMsg\nUSV-Status : $STAT"
                 myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
@@ -23,7 +23,7 @@ case $1 in
 		STAT=`upsc $myUpsName ups.status`
 		BATT=`upsc $myUpsName battery.charge`
 		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+				RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                 myMsg="$myMsg\nDas System laeuft jetzt wieder im Netzbetrieb.\n"
                 myMsg="$myMsg\nUSV-Status : $STAT"
                 myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
@@ -38,7 +38,7 @@ case $1 in
 		STAT=`upsc $myUpsName ups.status`
 		BATT=`upsc $myUpsName battery.charge`
 		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+				RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                 myMsg="$myMsg\nDas System hat die Verbindung mit der USV wieder hergestellt.\n"
                 myMsg="$myMsg\nUSV-Status : $STAT"
                 myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
@@ -49,7 +49,7 @@ case $1 in
 		STAT=`upsc $myUpsName ups.status`
 		BATT=`upsc $myUpsName battery.charge`
 		RUNTIME=`upsc $myUpsName battery.runtime`
-                RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME / 60))" "$(($RUNTIME % 60))")"
+				RUNTIME_S="$(printf "%02d:%02d:%02d" "$(($RUNTIME / 3600))" "$(($RUNTIME % 3600 / 60))" "$(($RUNTIME % 60))")"
                 myMsg="$myMsg\n!!! Das System faehrt wegen eines Stromausfalls herunter!!!\n"
                 myMsg="$myMsg\nUSV-Status : $STAT"
                 myMsg="$myMsg\nUSV-Detail : Batterie: $BATT% geladen - Laufzeit: $RUNTIME_S Stunden"
