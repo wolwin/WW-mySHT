@@ -21,7 +21,7 @@ Mit Hilfe des TCL-Skripts 'Msg2Var.tcl' können die 'HomeMatic' Systemvariablen 
 #### Msg2Var.tcl
 Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvariablen beschreiben.
 
-  -	Einfügen der Datei */usr/local/etc/config/nut/Msg2Var.tcl*
+  -	Einfügen der Datei */etc/config/nut/Msg2Var.tcl*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
     - Datei 'Msg2Var.tcl' mit folgendem Inhalt anlegen:
     - Datei-Rechte auf '0x0755' – 'root[0]' setzen
 
@@ -85,7 +85,7 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
 #### upsmon.conf
 *Erweiterung*: für den 'NUT-Client' und den 'NUT-Server' werden 'NOTIFYMSG' Zeilen eingefügt, die dann bei entsprechenden Events das 'nut_notify.sh' Skript aufrufen:
 
-  -	Anpassen der Datei */etc/config/nut/upsmon.conf*
+  -	Anpassen der Datei */etc/config/nut/upsmon.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
 
        ```
        ...
@@ -109,7 +109,7 @@ Das TCL-Skript 'Msg2Var.tcl' kann den 'state' (Wert) von 'HomeMatic' Systemvaria
 #### nut_notify.sh
 *Erweiterung*: für den 'NUT-Client' und den 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41'  durchgeführt.
 
-  -	Anpassen der Datei */etc/config/nut/nut_notify.sh*
+  -	Anpassen der Datei */etc/config/nut/nut_notify.sh*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
 
        ```
        #!/bin/sh
@@ -169,4 +169,5 @@ Snapshot des 'NUT' Email-Template ...
 - Details finden sich hier: ['RaspberryMatic' mit 'HM-Email-Addon' konfiguriert für den Versand von System-Meldungen](../SHT_RM_Email/README.md)
 
 ### Historie
+- 2022-08-08 - 'RaspberryMatic' Konfigurations-Pfad eingepflegt
 - 2022-04-18 - Erstveröffentlichung

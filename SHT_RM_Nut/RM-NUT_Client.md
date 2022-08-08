@@ -17,7 +17,7 @@ Ist die 'RaspberryMatic' mit ihrer Stromversorgung an eine USV angeschlossen, di
 #### nut.conf
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Client' handelt:
 
-  -	Anpassen der Datei */etc/config/nut/nut.conf*
+  -	Anpassen der Datei */etc/config/nut/nut.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
 
     - Eintrag 'MODE=none' ändern in:
       ```
@@ -27,7 +27,7 @@ Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt 
 #### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
 
-  -	Anpassen der Datei */etc/config/nut/upsmon.conf*
+  -	Anpassen der Datei */etc/config/nut/upsmon.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
     - Eintrag '# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
          ```
          MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> slave
@@ -57,7 +57,7 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 #### upsd.conf
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
 
-  -	Anpassen der Datei /etc/config/nut/upsd.conf
+  -	Anpassen der Datei */etc/config/nut/upsd.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
     -	Nach der letzten Kommentarzeile einfügen:
           ```
           LISTEN <IP-ADRESS> 3493
@@ -76,7 +76,7 @@ Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über IP-Adress
 
 Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt legen die Parameter fest, die den Berechtigungen dieses Benutzers zugeordnet sind. Der Abschnitt beginnt mit dem Namen des Benutzers in Klammern und wird bis zum nächsten Benutzernamen in Klammern oder EOF fortgesetzt. Diese Benutzer sind unabhängig von den Benutzer in '/etc/passwd'.
 
-  -	Anpassen der Datei */etc/config/nut/upsd.users*
+  -	Anpassen der Datei */etc/config/nut/upsd.users*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
     -	Nach der letzten Kommentarzeile einfügen:
           ```
           [<USERNAME-S>]
@@ -131,5 +131,6 @@ Danach sollte der 'NUT' Daemon 'upsmon' laufen - die USV entsprechend überwache
 - Weiter zu: ['RaspberryMatic' - 'NUT'-Konfigurationsdateien (original) ...](./bin/RM_NUT_3.53.30)
 
 ### Historie
+- 2022-08-08 - 'RaspberryMatic' Konfigurations-Pfad eingepflegt
 - 2022-07-20 - nutshutdown Aktualisierung
 - 2022-04-18 - Erstveröffentlichung
