@@ -21,7 +21,7 @@ Im Beispiel ist die USV eine 'Back-UPS CS 650' der Firma APC – dafür wird der
 #### nut.conf
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Server' handelt:
 
-  -	Anpassen der Datei */etc/config/nut/nut.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
+  -	Anpassen der Datei */etc/config/nut/nut.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
 
     - Eintrag 'MODE=none' ändern in:
       ```
@@ -31,7 +31,7 @@ Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt 
 #### ups.conf
 Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 'NUT' mit, mit welcher Art von USV-Gerät es arbeiten soll. Einige Einstellungen zur Steuerung der Kommunikation mit dem USV-Gerät können konfiguriert werden – außerdem können einige der USV-Geräteparameter überschrieben werden. Hier wird der 'NUT-Server' für die angeschlossene USV konfiguriert:
 
-  -	Anpassen der Datei */etc/config/nut/ups.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
+  -	Anpassen der Datei */etc/config/nut/ups.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
 
     -	Nach der letzten Kommentarzeile einfügen:
           ```
@@ -87,7 +87,7 @@ Diese Datei wird von der 'Network UPS Tools' Treibersteuerung gelesen. Es teilt 
 #### upsmon.conf
 Die Hauptaufgabe dieser Datei besteht darin, die Systeme zu definieren, die 'upsmon' überwacht, und 'NUT' mitzuteilen, wie das System bei Bedarf heruntergefahren werden soll. Hier wird die Verbindung zum 'NUT-Server' eingetragen.
 
-  -	Anpassen der Datei */etc/config/nut/upsmon.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
+  -	Anpassen der Datei */etc/config/nut/upsmon.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
     -	Eintrag '\# MONITOR ups@bigserver 1 <USERNAME> <PASSWORD> slave' ändern in:
           ```
           MONITOR <UPSNAME>@<IP-ADRESS> 1 <USERNAME> <PASSWORD> master
@@ -117,7 +117,7 @@ In der Datei 'upsmon.conf' wird mit der Zeile 'NOTIFYCMD /etc/config/nut/nut_not
 #### upsd.conf
 Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhost' und IP-Adresse) – es können verschiedene Verbindungskonfigurationswerte gesetzt werden (siehe # Kommentare):
 
-  -	Anpassen der Datei */etc/config/nut/upsd.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
+  -	Anpassen der Datei */etc/config/nut/upsd.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
     -	Nach der letzten Kommentarzeile einfügen:
           ```
           LISTEN <IP-ADRESS> 3493
@@ -137,7 +137,7 @@ Diese Datei kontrolliert den Zugriff auf den 'NUT-Server' (hier: über 'localhos
 
 Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt legen die Parameter fest, die den Berechtigungen dieses Benutzers zugeordnet sind. Der Abschnitt beginnt mit dem Namen des Benutzers in Klammern und wird bis zum nächsten Benutzernamen in Klammern oder EOF fortgesetzt. Diese Benutzer sind unabhängig von den Benutzer in '/etc/passwd'.
 
-  -	Anpassen der Datei */etc/config/nut/upsd.users*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
+  -	Anpassen der Datei */etc/config/nut/upsd.users*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
     -	Nach der letzten Kommentarzeile einfügen:
           ```
           [<USERNAME-M>]
@@ -175,7 +175,7 @@ Jeder Benutzer bekommt seinen eigenen Abschnitt. Die Felder in diesem Abschnitt 
 #### upssched.conf
 Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfsprogramm für 'upsmon'. Hier können eigene Skripte definiert werden, die bei bestimmten Ereignissen ausgeführt werden.
 
-  -	Anpassen der Datei */etc/config/nut/upssched.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
+  -	Anpassen der Datei */etc/config/nut/upssched.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
     - 'CMDSCRIPT' Eintrag ändern in:
       ```
       CMDSCRIPT /etc/config/nut/nut_schedule.sh
@@ -204,7 +204,7 @@ Diese Datei steuert die Operationen von 'upssched', dem zeitgeberbasierten Hilfs
 #### nut_schedule.sh
 Erweiterung: für den 'NUT-Client' und 'NUT-Server' werden die 'HomeMatic' Email-Systemvariablen gesetzt (16 => '### NUT-USV ###') und dann der Email-Versand für das Email-Template '41' durchgeführt.
 
-  -	Optional, wenn in 'upssched.conf' definiert: Anlegen der Datei */etc/config/nut/nut_schedule.sh*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-f%C3%BCr-die-raspberrymatic))
+  -	Optional, wenn in 'upssched.conf' definiert: Anlegen der Datei */etc/config/nut/nut_schedule.sh*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
     -	Datei 'nut_schedule.sh' mit folgendem Inhalt anlegen:
     - Datei-Rechte auf '0x0755' – 'root[0]' setzen
 
