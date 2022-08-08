@@ -21,7 +21,7 @@ Im Beispiel ist die USV eine 'Back-UPS CS 650' der Firma APC – dafür wird der
 #### nut.conf
 Diese Datei teilt den 'Network UPS Tools' mit, in welchem Modus sie ausgeführt werden sollen. Abhängig von dieser Einstellung werden dann die benötigten Module gestartet. Es wird eingetragen, dass es sich um einen 'NUT-Server' handelt:
 
-  -	Anpassen der Datei */etc/config/nut/nut.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-fuer-die-raspberrymatic))
+  -	Anpassen der Datei */etc/config/nut/nut.conf*&nbsp;&nbsp;&nbsp;([Konfiguration-Pfad 'RaspberryMatic' ...](./README.md#konfiguration-der-network-ups-tools-für-die-raspberrymatic))
 
     - Eintrag 'MODE=none' ändern in:
       ```

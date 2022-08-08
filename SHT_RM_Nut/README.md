@@ -72,7 +72,7 @@ Eine detaillierte Erläuterung (englisch) zur 'NUT' Konfiguration findet sich in
   - Das USV-Gerät stellt die Stromversorgung an allen USV-Steckdosen wieder her.
   - Alle angeschlossenen Systeme starten.
 
-### Konfiguration der 'Network UPS Tools' fuer die 'RaspberryMatic'
+### Konfiguration der 'Network UPS Tools' für die 'RaspberryMatic'
 
 Per Default ist 'NUT' auf der 'RaspberryMatic' deaktiviert. Über verschiedene Text-Konfigurationsdateien kann die 'RaspberryMatic' mit Hilfe der SSH-Konsole als 'NUT-Client' oder als 'NUT-Server' konfiguriert werden. Dazu muss zuerst die SSH-Konsole in der WebUI der 'RaspberryMatic' aktiviert werden (*'Systemsteuerung -> Sicherheit -> SSH'*). Mit dem Windows Programm 'WinSCP' kann dann mit dem User 'root' die SSH-Verbindung zur 'RaspberryMatic' hergestellt werden und die Änderungen vorgenommen werden.
 Außerdem muss die Firewall für den Port 3493 freigegeben werden (*'Systemsteuerung -> Firewall konfigurieren -> Portfreigabe'*).
