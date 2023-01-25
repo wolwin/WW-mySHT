@@ -5,11 +5,16 @@ Addons:
 
 HM-Systemvariablen:
 -------------------
+Benenne die alte Systemvariable 'Anwesenheit' um in 'sv_CCU-Status' und definiere wahr = "Booten"; falsch = "Betrieb".
+
 sv_CCU-Status	   CCU - Boot-Betrieb-Flag	  Logikwert
 					                                  wahr = Booten
 					                                  falsch = Betrieb
-sv_CCU-IP	       CCU - IP-Adresse	          Zeichenkette
-sv_CCU-HOST	     CCU - Hostname		          Zeichenkette
+
+Vorlage für 'sv_CCU-Status': https://homematic-forum.de/forum/viewtopic.php?f=31&t=26278
+
+sv_CCU-IP	   CCU - IP-Adresse               Zeichenkette
+sv_CCU-HOST	   CCU - Hostname                 Zeichenkette
 
 ==================================================================
 sys_CCU-Start
