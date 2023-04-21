@@ -14,7 +14,7 @@ Im Rahmen der Projekt-Entwicklungen zum Auslesen von Gas-, Wasser- und Stromzäh
 
 kam der Wunsch auf, ein universelles Homematic Skript für die Entgegennahme und Auswertung der Zählerablesungen einsetzen zu können. Natürlich hatten schon andere Programmautoren gute Lösungen veröffentlicht, die auch zuerst eingesetzt wurden:
 
-  - Jens Maus - [Zählersensor HM-ES-TX-WM - Universelle Zählerstandberechnung](https://homematic-forum.de/forum/viewtopic.php?f=27&t=31353&hilit=Z%C3%A4hlersensor+HM+ES+TX+WM+Universelle+Z%C3%A4hlerstandberechnung#p289220)
+  - Jens Maus - [Zählersensor HM-ES-TX-WM - Universelle Zählerstandberechnung](https://homematic-forum.de/forum/viewtopic.php?f=27&t=31353&)
   - Adaption von Michael Hansen - [Zählersensor HM-ES-TX-WM - Zählerstandberechnung - Batteriewechsel berücksichtigt](https://homematic-forum.de/forum/viewtopic.php?f=31&t=64810)
 
 Es zeigte sich jedoch schnell, dass im Rahmen der Projektarbeit immer wieder Änderungen und Anpassungen notwendig waren, die von dem vorhandenen Skript nicht abgedeckt werden konnte. Daher wurde ausgehend von der letzten Adaptionsversion von Michael Hansen das Enegiezähler-Skript weiter entwickelt. Basierend auf der Namensgebung des jeweiligen Zählertyps (Typ: Gas, Wasser, Strom, Tarifstrom) ist es nun möglich, mehrere Zähler, auch vom gleichen Typ, dem zentralen Auswerteskript zuzuweisen. Neben einer Fehlerbereiningung wurde auch die Möglichkeit geschaffen Tarifstrom-Zähler und Zählerwerte aus Systemvariablen zu übernehmen. Eine Kostenberechnung und Kostenauswertung rundet die Erweiterungen ab.
