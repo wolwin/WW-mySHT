@@ -1,6 +1,6 @@
 # WW-mySHT - Einbinden einer USV in die 'RaspberryMatic' mit den 'Network UPS Tools' - 'RaspberryMatic'-Erweiterungen
 
-[Zurück zur Übersicht ... ](../README.md)
+[Zurück zur Übersicht ...](../README.md)
 
 - Weiter zu: [I.) 'RaspberryMatic' und 'Network UPS Tools' ...](./README.md)
 

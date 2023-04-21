@@ -1,6 +1,6 @@
 # WW-mySHT - Homematic Prüf-Skript für 'AI-on-the-edge-device' Energiezähler
 
-[Zurück zur Übersicht ... ](../README.md)
+[Zurück zur Übersicht ...](../README.md)
 
 ### Funktion
 Im Rahmen der Projekt-Entwicklungen zum Auslesen von 'AI-on-the-edge-device' Gas-, Wasser- und Stromzählern

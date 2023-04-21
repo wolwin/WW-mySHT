@@ -1,6 +1,6 @@
 # WW-mySHT - 'RaspberryMatic' mit 'HM-Email-Addon' konfiguriert für den Versand von System-Meldungen
 
-[Zurück zur Übersicht ... ](../README.md)
+[Zurück zur Übersicht ...](../README.md)
 
 ### Funktion
 Ausgangspunkt ist die 'RaspberryMatic' in der Release-Version 3.53.30 vom 24.01.2020 auf einem RPI3-System, auf dem die Installation und Konfiguration des 'HM-Email-Addon' in der Release-Version 1.7.2 vom 07.07.2021 vorgenommen wird.
