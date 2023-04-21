@@ -18,7 +18,7 @@ Das Prüf-Skript ist eher 'aus der Not heraus' im Projekt 'AI-on-the-edge-device
   - 'AI-Proof' Skript - [Stand 21.04.2023 - Download ...](./bin/AI-Device_Proof_20230421.zip)
 
 ### Installation
-Bei der Installation sollten zuerst die Systemvariablen angelegt werden: für jeden 'AI-on-the-edge-device' Zähler-Typ wird eine Systemvariable angelegt - für einen Tarifstromzähler werden zwei Systemvariablen getrennt für HT und NT eingerichtet. Die Namensgebung der Systemvariablen entspricht denen des ['Uni-Zaehler' Skripts](./SHT_EZ_Script/README.md): bestehend aus dem Präfix 'sys_AI_', der Kennung des Zähler-Sensors 'ZS-' und des Zähler-Typs ('Gas', 'Wasser', 'Strom', 'TStrom-HT', 'TStrom-NT').
+Bei der Installation sollten zuerst die Systemvariablen angelegt werden: für jeden 'AI-on-the-edge-device' Zähler-Typ wird eine Systemvariable angelegt - für einen Tarifstromzähler werden zwei Systemvariablen getrennt für HT und NT eingerichtet. Die Namensgebung der Systemvariablen entspricht denen des ['Uni-Zaehler' Skripts](../SHT_EZ-Script/README.md): bestehend aus dem Präfix 'sys_AI_', der Kennung des Zähler-Sensors 'ZS-' und des Zähler-Typs ('Gas', 'Wasser', 'Strom', 'TStrom-HT', 'TStrom-NT').
 
 Möchte man auch den Status der Ermittlung sehen, wird zusätzlich jeweils eine zweite Systemvariable mit dem Postfix '_Status' angelegt. Im Skript kann die Ausgabe des Status individuell konfiguriert werden.
 <br><br>
