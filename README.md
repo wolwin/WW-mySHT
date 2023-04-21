@@ -11,6 +11,8 @@ der unterschiedlichen <b>_S_</b>mart-<b>_H_</b>ome-<b>_T_</b>ools für die Heima
  | [Sensor‑Datenbank](./SHT_Sensor-Datenbank/README.md "Zeigen ...") | Erstellen der Sensor-Datenbank mit Node-RED |
  | [Sensor‑Feinstaub](./SHT_Sensor-Feinstaub/README.md "Zeigen ...") | Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Feinstaub Messstation durch Node-RED |
  | [Sensor‑Weatherman](./SHT_Sensor-Weatherman/README.md "Zeigen ...") | Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Wetterstation 'STALL - Weatherman' durch Node-RED |
+ | [Homematic Skript 'Uni‑Zaehler'](./SHT_EZ_Script/README.md "Zeigen ...") | Homematic Energiezähler-Skript mit 'universeller Konfiguration und Auswertung' |
+ | [Homematic Skript 'AI-Proof'](./SHT_EZ-Script_AI/README.md "Zeigen ...") | Homematic Prüf-Skript für 'AI-on-the-edge-device' Energiezähler |
 
 ## Andere Übersichten
 - 'WW-mySHP' - Smart-Home-Projekte - [Zeigen ...](https://github.com/wolwin/WW-mySHP/blob/master/README.md)

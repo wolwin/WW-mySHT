@@ -94,7 +94,7 @@ Als nächstes werden die Email-Vorlagen als Templates erstellt:
 
   ![WW-mySHT - HM-Email-Addon](./img/hm_email_template_47.jpg)
 
-- Universielle Email-Templates, deren Inhalte über die jeweilig benutzten Systemvariablen gesteuert werden:
+- Universelle Email-Templates, deren Inhalte über die jeweilig benutzten Systemvariablen gesteuert werden:
 
   ![WW-mySHT - HM-Email-Addon](./img/hm_email_template_40.jpg)
 
@@ -135,8 +135,6 @@ Um die 'Start'- und 'Herunterfahren'-Aktionen der 'RaspberryMatic' per Email-Ben
 
   ![WW-mySHT - HM-Email-Addon](./img/hm_email_mbox_3.jpg)
 
-
-
 ### 'HM-Email-Addon' Erweiterung für Version 1.7.2
 
 ##### - Erweiterung: 'HomeMatic' Alarm-Meldung, wenn ein Email-Fehler auftritt
@@ -162,9 +160,6 @@ Um die 'Start'- und 'Herunterfahren'-Aktionen der 'RaspberryMatic' per Email-Ben
 - Beispiel:
 
   ![WW-mySHT - HM-Email-Addon](./img/EmailAddon_172_Alarm.jpg)
-
-
-
 
 ### Historie
 - 2022-04-19 - Erstveröffentlichung

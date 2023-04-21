@@ -15,7 +15,7 @@ Bei jeder 'NUT' Statusänderung versendet das Skript eine entsprechende Email
 (siehe auch 'nut_schedule.sh'). Es wurden im Skript die 'USV_State' der
 'APC Back-UPS CS 650' benutzt – bei anderen USVen kommen evtl. andere
 Zusammenstellungen der Status-Kurzbezeichnungen vor. Es müßten dann die
-Bezeichnugen geändert oder das Skript universieller gestaltet werden.
+Bezeichnugen geändert oder das Skript universeller gestaltet werden.
 
 ==================================================================
 
