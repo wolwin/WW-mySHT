@@ -28,7 +28,7 @@ Dann können die 'AI-on-the-edge-device' Geräte (siehe Konfiguration: ['AI-on-t
 <br><br>
 ![WW-mySHT - EZ_Script_AI](./img/EZ_Script_AI_02.jpg "'AI-Proof' Programm")
 <br><br>
-Das ['Uni-Zaehler' Skript](../SHT_EZ_Script/README.md) kann nun über die 'AI-on-the-edge-device' Systemvariable per 'bei Aktualisierung'-Event direkt auf den 'überprüften' Zählerwert zugreifen und auswerten.
+Das ['Uni-Zaehler' Skript](../SHT_EZ-Script/README.md) kann nun über die 'AI-on-the-edge-device' Systemvariable per 'bei Aktualisierung'-Event direkt auf den 'überprüften' Zählerwert zugreifen und auswerten.
 
 #### Skript 'AI-Device_Korrektur.hsm'
 'AI on the edge'-Zähler mit MQTT Anbindung an die Homematic Zentrale über ein virtuelles CCU-Jack Gerät.
