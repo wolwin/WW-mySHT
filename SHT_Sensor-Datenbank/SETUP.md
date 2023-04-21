@@ -1,6 +1,6 @@
 ## WW-mySHT - Setup Node-RED - Datenbank
 
-[Zurück zur Übersicht ...](../README.md)<br>[Zurück zu 'Node-RED - Datenbank' ...](./README.md)
+[Zurück zur Übersicht ... ](../README.md)<br>[Zurück zu 'Node-RED - Datenbank' ...](./README.md)
 
 ### Funktion
 

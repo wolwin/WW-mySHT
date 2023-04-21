@@ -1,6 +1,6 @@
 # WW-mySHT - Einbinden einer USV in die 'RaspberryMatic' mit den 'Network UPS Tools'
 
-[Zurück zur Übersicht ...](../README.md)
+[Zurück zur Übersicht ... ](../README.md)
 
 - Weiter zu: [II.) 'RaspberryMatic' als 'NUT-Client' konfigurieren ...](./RM-NUT_Client.md)
 

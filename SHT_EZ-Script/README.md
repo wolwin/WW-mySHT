@@ -1,6 +1,6 @@
 # WW-mySHT - Homematic Energiezähler-SKript mit 'universeller Konfiguration und Auswertung'
 
-[Zurück zur Übersicht ...](../README.md)
+[Zurück zur Übersicht ... ](../README.md)
 
 ### Funktion
 
