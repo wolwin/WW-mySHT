@@ -1,4 +1,4 @@
-# WW-mySHT - Homematic Energiezähler-SKript mit 'universeller Konfiguration und Auswertung'
+# WW-mySHT - Homematic Energiezähler-Skript mit 'universeller Konfiguration und Auswertung'
 
 [Zurück zur Übersicht ...](../README.md)
 
@@ -17,13 +17,13 @@ kam der Wunsch auf, ein universelles Homematic Skript für die Entgegennahme und
   - Jens Maus - [Zählersensor HM-ES-TX-WM - Universelle Zählerstandberechnung](https://homematic-forum.de/forum/viewtopic.php?f=27&t=31353&)
   - Adaption von Michael Hansen - [Zählersensor HM-ES-TX-WM - Zählerstandberechnung - Batteriewechsel berücksichtigt](https://homematic-forum.de/forum/viewtopic.php?f=31&t=64810)
 
-Es zeigte sich jedoch schnell, dass im Rahmen der Projektarbeit immer wieder Änderungen und Anpassungen notwendig waren, die von dem vorhandenen Skript nicht abgedeckt werden konnte. Daher wurde ausgehend von der letzten Adaptionsversion von Michael Hansen das Enegiezähler-Skript weiter entwickelt. Basierend auf der Namensgebung des jeweiligen Zählertyps (Typ: Gas, Wasser, Strom, Tarifstrom) ist es nun möglich, mehrere Zähler, auch vom gleichen Typ, dem zentralen Auswerteskript zuzuweisen. Neben einer Fehlerbereiningung wurde auch die Möglichkeit geschaffen Tarifstrom-Zähler und Zählerwerte aus Systemvariablen zu übernehmen. Eine Kostenberechnung und Kostenauswertung rundet die Erweiterungen ab.
+Es zeigte sich jedoch schnell, dass im Rahmen der Projektarbeit immer wieder Änderungen und Anpassungen notwendig waren, die von dem vorhandenen Skript nicht abgedeckt werden konnte. Daher wurde ausgehend von der letzten Adaptionsversion von Michael Hansen das Energiezähler-Skript weiter entwickelt. Basierend auf der Namensgebung des jeweiligen Zählertyps (Typ: 'Gas', 'Wasser', 'Strom', 'Tarifstrom') ist es nun möglich, mehrere Zähler, auch vom gleichen Typ, dem zentralen Auswerteskript zuzuweisen. Neben einer Fehlerbereiningung wurde auch die Möglichkeit geschaffen Tarifstrom-Zähler und Zählerwerte aus Systemvariablen zu übernehmen. Eine Kostenberechnung und Kostenauswertung rundet die Erweiterungen ab.
 
 ### Details
-Die Vielzahl an Aufgaben, die das 'Uni-Zaehler'-Skript abdeckt, erfordert eine korrekte Grundinstallation. Um dies dem Anwender zu erleichtern, werden weitere fünf Hilfskripte bereitgestellt, die sich um das Anlegen, Füllen und Löschen der Inhalte der Systemvariablen kümmern - oder bei Nichtgefallen, diese Systemvariablen auch wieder aus der CCU Zentrale entfernt. Diese Hilfsskripte brauchen nicht auf der CCU abgespeichert werden - sie können extern mit den eigenen Einstellungen konfiguriert und abgelegt werden - dann werden sie im 'Programme-Bereich' nach 'Skript testen' kopiert und dort einmalig ausgeführt.
+Die Vielzahl an Aufgaben, die das 'Uni-Zaehler'-Skript abdeckt, erfordert eine korrekte Grundinstallation. Um dies dem Anwender zu erleichtern, werden weitere fünf Hilfskripte bereitgestellt, die sich um das Anlegen, Füllen und Löschen der Inhalte der Systemvariablen kümmern - oder bei Nichtgefallen, diese Systemvariablen auch wieder aus der CCU Zentrale zu entfernen. Diese Hilfsskripte brauchen nicht auf der CCU abgespeichert werden - sie können extern mit den eigenen Einstellungen konfiguriert und abgelegt werden - dann werden sie im 'Programme-Bereich' nach 'Skript testen' kopiert und dort einmalig manuell ausgeführt.
 
 Hinweis:
- - Skript-Experten können nicht nur den Namen der Systemvariablen in dem globalen Vorsatzteil des Systemvariablennamen ändern (hier: 'sys_'), sondern weitreichend auch in allen Skripten die Namensbezeichnungen selber, ohne, dass der eigentliche Code geändert werden muss. Gleiches gilt auch für die zentrale Erkennung von Zählergeräten an ihrem Namen (hier: 'ZS-'), die ausgewertet werden sollen.
+ - Skript-Experten können nicht nur den Namen der Systemvariablen in dem globalen Vorsatzteil des Systemvariablennamen ändern (hier: 'sys_'), sondern weitreichend auch in allen Skripten die Namensbezeichnungen selber, ohne dass der eigentliche Code geändert werden muss. Gleiches gilt auch für die zentrale Erkennung von Zählergeräten an ihrem Namen (hier: 'ZS-'), die ausgewertet werden sollen.
 
   _!!! Wichtig !!! - solche Änderungen sollte man besser NICHT vornehmen ... man verliert eine evtl. Update-Möglichkeit ..._
 
