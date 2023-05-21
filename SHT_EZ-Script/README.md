@@ -30,7 +30,7 @@ Hinweis:
 ### Homematic Skripte
 Neben dem zentralen 'Uni-Zaehler' Skript gibt es noch fünf Hilfs- und Konfigurations-Skripte, die die Installation begleiten und vereinfachen:
 
-  - 'Uni-Zaehler' Skript - [Stand 20.04.2023 - Download ...](./bin/Uni-Zaehler_20230420.zip)
+  - 'Uni-Zaehler' Skript - [Stand 21.05.2023 - Download ...](./bin/Uni-Zaehler_20230521.zip)
 
   - 'Uni-Zaehler' Tool Skripte - [Stand 20.04.2023 - Download ...](./bin/Uni-Zaehler_Sys_20230420.zip)
 
@@ -445,4 +445,5 @@ Klickt man in der Gesamtübersicht den 'Hauszähler Strom' an, werden alle verf�
 ![WW-mySHT - EZ_Script](./img/EZ_Script_View_05.jpg "'Uni-Zaehler' Skript")
 
 ### Historie
+- 2023-05-21 - Anpassung WebGui Skript
 - 2023-04-20 - Erstveröffentlichung
