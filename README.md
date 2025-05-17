@@ -13,6 +13,7 @@ der unterschiedlichen <b>_S_</b>mart-<b>_H_</b>ome-<b>_T_</b>ools für die Heima
  | [Sensor‑Weatherman](./SHT_Sensor-Weatherman/README.md "Zeigen ...") | Übernahme, Aufbereitung, Deployment und Visualisierung der per WiFi versandten Sensordaten der Wetterstation 'STALL - Weatherman' durch Node-RED |
  | [Homematic Skript 'Uni‑Zaehler'](./SHT_EZ-Script/README.md "Zeigen ...") | Homematic HM-ES-TX-WM Energiezähler-Skript mit 'universeller Konfiguration und Auswertung' |
  | [Homematic Skript 'AI-Proof'](./SHT_EZ-Script_AI/README.md "Zeigen ...") | Homematic Prüf-Skript für 'AI-on-the-edge-device' Energiezähler |
+ | [Home Assistant - INSTAR](./SHT_HA_INSTAR/README.md "Zeigen ...") | Home Assistant - INSTAR 2K+ Kameras |
 
 ## Andere Übersichten
 - 'WW-mySHP' - Smart-Home-Projekte - [Zeigen ...](https://github.com/wolwin/WW-mySHP/blob/master/README.md)
