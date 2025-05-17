@@ -58,7 +58,7 @@ Mit diesen Dateien kann individuell der Umfang der 'INSTAR' MQTT Entitäten den 
   - Skript-Code aus 'Script_Create IN-MQTT device - CAM-X - ALL.txt' bzw. aus 'Script_Create IN-MQTT device - CAM-X - MIN.txt' in YAML-Editor kopieren
   - Skript speichern und Abfrage bestätigen.
 
-Damit ist das zentrale Skript 'Create IN-MQTT device - CAM-X' zur Erzeugung eines INSTAR MQTT Gerätes erstellt. Es kann direkt ausgeführt werden (siehe 3 Punkte / <i>Ausführen</i>). Alternativ kann auch für jede Kamera zusätzlich ein eigenes Skript angelegt werden, das die notwendigen Konfigurationsparameter enthält und dann an das zentrale Erzeugungsskript übergibt - siehe Beispiel-Datei 'Script_Create IN-MQTT device - CAM-OnXyz.txt'.
+Damit ist das zentrale Skript 'Create IN-MQTT device - CAM-X' zur Erzeugung eines 'INSTAR MQTT Gerätes' erstellt. Es kann direkt ausgeführt werden (siehe 3 Punkte / <i>Ausführen</i>). Alternativ kann auch für jede Kamera zusätzlich ein eigenes Skript angelegt werden, das die notwendigen Konfigurationsparameter enthält und dann an das zentrale Erzeugungsskript übergibt - siehe Beispiel-Datei 'Script_Create IN-MQTT device - CAM-OnXyz.txt'.
 <br><br>
 ![WW-mySHT - HA_INSTAR](./img/HA_INSTAR_04.jpg "'MQTT - INSTAR - Skripte")
 <br><br>
